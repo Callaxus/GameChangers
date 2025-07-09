@@ -9,6 +9,8 @@ import {
 } from "react-router-dom";
 import LoginPage from './components/LoginPage';
 import NovaConta from './components/NovaConta';
+import PerfilUsuario from './components/UserPage';
+
 
 const router = createBrowserRouter([
   {
@@ -16,13 +18,19 @@ const router = createBrowserRouter([
     element: <App />,
   },
   {
-    path: "/LoginPage.jsx",
+    path: "/loginpage",
     element: <LoginPage/>,
   },
   {
-    path: "/NovaConta.jsx",
+    path: "/novaconta",
     element: <NovaConta/>,
   },
+   {
+    path: "/perfilusuario",
+    element: <PerfilUsuario/>,
+  },
+
+  
 ]);
 
 
