@@ -1,5 +1,6 @@
 import { useRoute, Router } from 'react-router-dom';
 import './App.css'
+import ExplorePage from './components/ExplorePage';
 
 function App() {
   return (
@@ -10,8 +11,12 @@ function App() {
           <button onClick={() => Router('../src/components/LoginPage.jsx')}>FAZER LOGIN</button>
           <button onClick={() => Router('../src/components/NovaConta.jsx')}>CRIAR CONTA</button>
           <button onClick={() => alert('Entrando como convidado...')}>CONVIDADO</button>
+      
       </div>
+      <ExplorePage/>
     </header>
+
+    
   );
 }
 
