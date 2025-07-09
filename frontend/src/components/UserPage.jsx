@@ -1,5 +1,10 @@
 import { useState } from "react";
-import { BsPencilSquare, GoBell } from "react-icons/bs";
+import CardItem from "./CardItem";
+import { BsPencilSquare, BsPlusCircle } from "react-icons/bs";
+import { FaRegUser } from "react-icons/fa";
+import { GoBell } from "react-icons/go";
+import { RiArrowDownSFill } from "react-icons/ri";
+import { MdTravelExplore } from "react-icons/md";
 
 
 export default function PerfilUsuario() {
@@ -9,7 +14,7 @@ export default function PerfilUsuario() {
    
 
       {/* Perfil */}
-      <div className="bg-[#f8f4ec] p-4">
+      <div className="bg-orange-200 p-4">
         <div className="flex items-center gap-4">
           <div className="bg-gray-300 rounded-full w-16 h-16 flex justify-center items-center text-white text-2xl">
             🐵
@@ -31,23 +36,24 @@ export default function PerfilUsuario() {
       </div>
 
       {/* Meus Itens */}
-      <div className="p-4">
-        <SectionHeader title="MEUS ITENS" />
-        <div className="flex space-x-3 overflow-x-auto py-2">
+      <div className="p-4 "flex space-x-3 overflow-x-auto py-2">
+        <div><RiArrowDownSFill title="Meus itens" /></div>
+
           {[1, 2, 3].map((i) => (
-            <CardItem key={i} />
+            // <CardItem key={i} />
           ))}
         </div>
-      </div>
+      
 
       {/* Histórico */}
       <div className="p-4">
-        <SectionHeader title="HISTÓRICO" onClick={() => setShowHistorico(!showHistorico)} />
+        <RiArrowDownSFill title="Histórico" onClick={() => setShowHistorico(!showHistorico)} />
         {showHistorico && (
           <div className="bg-white p-2 rounded shadow text-sm space-y-2">
             <div className="flex justify-between items-center">
               <span>Carta XXXXX</span>
-              <span>TROCA ✅</span>
+              <span>TROCA 
+                ✅</span>
             </div>
             <div className="flex justify-between items-center">
               <span>Carta YYYYY</span>
@@ -59,11 +65,11 @@ export default function PerfilUsuario() {
 
       {/* Rodapé */}
       <div className="fixed bottom-0 left-0 right-0 bg-[#F8983A] flex justify-around py-3 text-white">
-        <History className="w-6 h-6" />
-        <PlusCircle className="w-6 h-6" />
-        <User className="w-6 h-6" />
+        <MdTravelExplore className="w-6 h-6" />
+        <BsPlusCircle className="w-6 h-6" />
+        <FaRegUser className="w-6 h-6" />
       </div>
-    </div>
+    
   );
 }
 
@@ -89,12 +95,4 @@ function SectionHeader({ title, onClick }) {
   );
 }
 
-function CardItem() {
-  return (
-    <div className="w-32 h-36 bg-gray-200 rounded p-2 text-xs flex flex-col justify-end">
-      <div className="text-purple-800 font-semibold">Carta Muito Boa</div>
-      <div>3,33€</div>
-      <div className="text-gray-600">Troca ou Venda</div>
-    </div>
-  );
-}
+
