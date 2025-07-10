@@ -25,10 +25,6 @@ import figImg from "../CategoriasImg/magic.png";
 
 export default function ExplorePage (props){
     return (
-        
-    
-
-        
         <div 
         className="bg-orange-100 w-screen min-h-screen">
         <h2 
@@ -132,8 +128,6 @@ export default function ExplorePage (props){
               title = "Figuras"/>
             </div>
             </div>
-
-
 
             <h1 className="text-purple-900 text-4xl font-bowlby p-5"> Anúncios Populares</h1>
             <div id="cardItemFlex" className="m-2 grid grid-cols-2 gap-2">
