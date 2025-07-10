@@ -9,8 +9,8 @@ import {
 } from "react-router-dom";
 import LoginPage from './components/LoginPage';
 import NovaConta from './components/NovaConta';
-import PerfilUsuario from './components/UserPage';
-
+import ExplorePage from './components/ExplorePage';
+import Notification from './components/NotificationsTab';
 
 const router = createBrowserRouter([
   {
@@ -26,11 +26,13 @@ const router = createBrowserRouter([
     element: <NovaConta/>,
   },
    {
-    path: "/perfilusuario",
-    element: <PerfilUsuario/>,
+    path: "/explore",
+    element: <ExplorePage/>,
   },
-
-  
+  {
+    path: "/notifications",
+    element: <Notification/>,
+  },
 ]);
 
 
