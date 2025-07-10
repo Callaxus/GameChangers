@@ -1,5 +1,6 @@
 import { CiSearch } from "react-icons/ci";
 import { GoBell } from "react-icons/go";
+import CardItem from "./CardItem"
 import Category from "./CategoryCircle";
 import magicImg from "../CategoriasImg/magic.png";
 import ps4Img from "../CategoriasImg/ps4.png";
@@ -24,38 +25,51 @@ import figImg from "../CategoriasImg/magic.png";
 
 export default function ExplorePage (props){
     return (
-        <div>
-        <div className="flex items-center">
+        
+    
+
+        
+        <div 
+        className="bg-orange-100 w-screen min-h-screen">
+        <h2 
+        className="font-bowlby pt-5 pr-4 text-right text-4xl text-purple-800">
+            Gamechangers
+        </h2>
+        <div 
+        id="top bar"
+        className="w-full mb-[1rem] ms-2 flex items-center max-w-430 place-content-between">
             <div 
             id="search" 
-            className="flex justify-center items-center bg-gray-50">
+            className="flex-1 flex justify-center items-center">
                 <form 
-                className="flex w-full max-w-md bg-white rounded-lg p-2">
+                className="flex w-full max-w-md rounded-lg p-2">
                     <input 
                     type="text" 
                     id="searchbar" 
                     placeholder="O que procura hoje?" 
-                    className="flex-grow px-4 py-2 rounded-l-lg border border-orange-400
+                    className="flex-grow px-4 py-2 rounded-l-lg border border-purple-800
                      focus:outline-none text-base">
                     </input>
                         <button 
                         type="submit" 
                         className="flex items-center justify-center px-4 py-2 
-                        rounded-r-lg border border-orange-400 bg-orange-400
-                         text-white hover:bg-orange-500 transition-colors">
+                        rounded-r-lg border border-purple-800 bg-purple-800
+                         text-white hover:bg-purple-900 transition-colors">
                             <CiSearch size={22}/>
                         </button>
                 </form>
             </div>
             <button 
-            className="flex items-center justify-center px-4 py-2 text-orange-500">
-            <GoBell size={22}/>
+            className="flex items-center justify-center px-4 py-2 text-purple-800 me-2">
+            <GoBell size={30}/>
             </button>
         </div>
-         <div id="scrolling-wrapper">
-            <div id="scrolling-wrapper-flexbox"> 
-                <h1>Explore as nossas categorias</h1>
-            <div className="overflow-x-scroll overflow-y-hidden whitespace-nowrap">
+
+
+        <div id="scrolling-wrapper"  className="w-md">
+            <div id="scrolling-wrapper-flexbox" className="w-md bg-orange-400 text-white pt-[1rem] pb-2"> 
+                <h1 className="font-bowlby text-xl tracking-wider m-2 ms-5">Explore as nossas categorias</h1>
+            <div className="w-md text-white overflow-x-scroll overflow-y-hidden whitespace-nowrap pl-5 pb-2 scrollbar scrollbar-thumb-orange-300 scrollbar-track-orange-400">
               <Category 
               imgSrc = {magicImg}
               title = "Magic: The Gathering"/>
@@ -64,7 +78,7 @@ export default function ExplorePage (props){
               title = "Playstation 4"/>
               <Category 
               imgSrc = {ns2Img}
-              title = "Magic: The Gathering"/>
+              title = "Nintendo Switch 2"/>
               <Category 
               imgSrc = {ps5Img}
               title = "Playstation 5"/>
@@ -118,7 +132,20 @@ export default function ExplorePage (props){
               title = "Figuras"/>
             </div>
             </div>
+
+
+
+            <h1 className="text-purple-900 text-4xl font-bowlby p-5"> Anúncios Populares</h1>
+            <div id="cardItemFlex" className="m-2 grid grid-cols-2 gap-2">
+                <CardItem/>
+                <CardItem/>
+                <CardItem/>
+                <CardItem/>
+                <CardItem/>
+                <CardItem/>
+            </div>
         </div>
     </div>
+
     )
 }

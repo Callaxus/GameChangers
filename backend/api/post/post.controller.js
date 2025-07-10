@@ -16,3 +16,25 @@ exports.createPost = async(req, res) =>{
         res.status(500).json({error: err.message})
     }
 };
+
+exports.updatePost = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const updatedPost = await Post.findByIdAndUpdate(id, req.body, { new: true });
+        if (!updatedPost) return res.status(404).json({ msg: 'Post not found' });
+        res.json(updatedPost);
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
+};
+
+exports.deletePost = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const deletedPost = await Post.findByIdAndDelete(id);
+        if (!deletedPost) return res.status(404).json({ msg: 'Post not found' });
+        res.json({ msg: 'Post deleted', post: deletedPost });
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
+};
