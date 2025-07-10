@@ -1,22 +1,3 @@
 {
 	"mongoURI": "mongodb+srv://appconnect:pass1234@gamechangers.1fg9wqn.mongodb.net/GameChangers?retryWrites=true&w=majority" 
 }
-
-user {"_id": "U000","username": "username","password": "password","email": "mail.mail@mail.mail","local": "local"}
-
-post {"_id": 0,"user_id": "U001","product_id": 0,"price": 0,"for_trade": true,"prod_local": "Local"}
-
-product {"_id": 0,"name": "prodname","category": "categoria","description": "description","picture": "pic.url"}
-
-offer {"_id": 0,"post_id": 0,"owner_id": "U000","buyer_id": "U000","buy_offer": "Offer"}
-
-post new
-{
-  "_id": 0,
-  "user_id": "U001","product_id": 0, "price": 0, "for_trade": true,"prod_local": "Local","status": "active"
-}
-
-offer new
-{
-  "_id": 0,"post_id": 0,"owner_id": "U001","buyer_id": "U000","buy_offer": "Offer details","status": "pending","notification": true      
-}
