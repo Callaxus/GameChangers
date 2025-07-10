@@ -1,15 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
 import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
+import App from './App';
 import LoginPage from './components/LoginPage';
 import NovaConta from './components/NovaConta';
-import PerfilUsuario from './components/UserPage';
+import Perfil from './components/Perfil';
+import './index.css';
+import reportWebVitals from './reportWebVitals';
+
+
 
 
 const router = createBrowserRouter([
@@ -26,10 +28,9 @@ const router = createBrowserRouter([
     element: <NovaConta/>,
   },
    {
-    path: "/perfilusuario",
-    element: <PerfilUsuario/>,
+    path: "/perfil",
+    element: <Perfil/>,
   },
-
   
 ]);
 
@@ -42,3 +43,4 @@ root.render(
 );
 
 reportWebVitals();
+

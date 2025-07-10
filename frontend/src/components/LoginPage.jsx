@@ -3,6 +3,7 @@ import { IoReturnUpBackOutline } from "react-icons/io5";
 import Input from './Input';
 import { useNavigate } from 'react-router-dom';
 
+
 export default function LoginPage() {
     const navigate = useNavigate();
     const [email, setEmail] = useState('');
@@ -35,5 +36,10 @@ export default function LoginPage() {
                 <Input title={"Senha*"} type={"password"} placeholder={"senha"} value={password} onChange={(e) => setPassword(e.target.value)}/>
                 <label><input className='accent-orange-400' type="checkbox"  /> Guardar palavra-passe</label>
                 <button className="mt-16 font-bowlby border-2 border-purple-900 bg-purple-900 text-white rounded-lg px-20 py-2 m-2 w-72 hover:bg-white hover:text-purple-900 transition-colors" onClick={handleLogin}>ENTRAR</button>
-        </div></>
+        </div>
+    
+        </>
+        
     );}
+
+    

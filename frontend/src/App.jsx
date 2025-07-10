@@ -18,10 +18,11 @@ function App() {
         </div>
       </header>
       <div className='bg-orange-200 flex justify-center w-screen py-4'>
-        <button className="font-bowlby flex items-center justify-center border-2 border-purple-900 bg-purple-900 text-white rounded-lg  px-4 py-3 m-2 hover:bg-purple-800 hover:text-orange-400 transition-colors" onClick={() => alert('')}>CONVIDADO</button>
+        <button className="font-bowlby flex items-center justify-center border-2 border-purple-900 bg-purple-900 text-white rounded-lg  px-4 py-3 m-2 hover:bg-purple-800 hover:text-orange-400 transition-colors" onClick={() => navigate('/explore')}>CONVIDADO</button>
       </div>
     </div>
   );
 }
 
 export default App;
+
