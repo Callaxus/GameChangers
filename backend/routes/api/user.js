@@ -1,6 +1,7 @@
 const express = require('express');
-const User = require('../models/User');
-const authMiddleware = require('../middleware/authMiddleware');
+const User = require('../../models/user');
+const authMiddleware = require('../../api/auth/auth.middleware');
+
 const router = express.Router();
 
 // @route   GET /api/user/profile

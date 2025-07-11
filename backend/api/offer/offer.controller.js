@@ -1,4 +1,4 @@
-const Offer = require('../../../models/offer');
+const Offer = require('../../models/offer');
 
 exports.createOffer = async (req, res) => {
   try {
