@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const OfferSchema = new mongoose.Schema({
-  _id: { type: Number, required: true, unique: true },
+  offerid: { type: Number, required: true, unique: true },
   post_id: { type: Number, required: true },
   owner_id: { type: String, required: true },
   buyer_id: { type: String, required: true },
