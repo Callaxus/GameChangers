@@ -15,10 +15,12 @@ export default function CardItem({name, price, date, location}) {
       <div className="flex-wrap
          place-content-between p-2">
         <h2 className="text-stone-950 font-semibold text-2xl">{name}</h2>
-        <h3 className="text-purple-950 font-semibold text-2xl">{price}</h3>
+        <div className="flex gap-2 text-purple-950 items-center">  
+        <MdOutlineChangeCircle size={30}/>
+        <h3 className="font-semibold text-2xl">{price}</h3>
+        </div>
         <h4 className="text-stone-950 text-s">{`${location}, ${date}`}</h4>
-        <h4 className="text-white font-bowlby text-xl bg-orange-500 mt-2 p-1 rounded-xl text-center">Para Venda</h4>
-        <h4 className="text-white font-bowlby text-xl bg-purple-800 mt-2 p-1 rounded-xl text-center">Para Troca</h4>
+
       </div>
     </div>
   );

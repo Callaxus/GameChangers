@@ -12,11 +12,9 @@ import './index.css';
 import reportWebVitals from './reportWebVitals';
 import ExplorePage from './components/ExplorePage';
 import Notification from './components/NotificationsTab';
-<<<<<<< HEAD
-=======
+import Category from './components/CategoryCircle';
 import Categorias from './components/TodasCategorias';
 import CriarAnuncio from './components/CriarAnuncio';
->>>>>>> cdee85b003490c02fb1265809fda686cfbc307ff
 
 
 
@@ -39,29 +37,20 @@ const router = createBrowserRouter([
   },
   {
     path: "/explore",
-<<<<<<< HEAD
     element: <ExplorePage />,
-=======
-
-    element: <ExplorePage/>,
->>>>>>> cdee85b003490c02fb1265809fda686cfbc307ff
   },
   {
     path: "/notifications",
     element: <Notification/>,
-<<<<<<< HEAD
-  }
-=======
   },
    {
     path: "/categorias",
     element: <Categorias/>,
   },
-  {
-    path: "/criar_anuncio",
+   {
+    path: "/criar-anuncio",
     element: <CriarAnuncio/>,
-  },
->>>>>>> cdee85b003490c02fb1265809fda686cfbc307ff
+  }
 ]);
 
 
