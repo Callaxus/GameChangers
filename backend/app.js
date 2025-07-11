@@ -2,10 +2,13 @@
 
 const express = require('express');
 const connectDB = require('./config/db');
+
 var cors = require('cors');
 
 // routes
 const app = express();
+
+
 
 // Connect Database
 connectDB();
@@ -15,12 +18,9 @@ app.use(cors({ origin: true, credentials: true }));
 
 // Init Middleware
 app.use(express.json({ extended: false }));
-
 app.get('/', (req, res) => res.send('Hello world!'));
 
-
-
-app.use('/api/posts', require('./api/post/post.routes'));
+app.use('/api/post', require('./routes/api/post'));
 app.use('/api/notifications', require('./api/notifications/notification.routes'));
 app.use('/api/auth', require('./api/auth/auth.routes'));
 app.use('/api/offers', require('./api/offer/offer.routes'));
