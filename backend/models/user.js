@@ -8,18 +8,5 @@ const UserSchema = new mongoose.Schema({
   local: { type: String, required: true }
 });
 
-module.exports = mongoose.model('User', UserSchema);
+module.exports = mongoose.models.User || mongoose.model('User', UserSchema);
 
-
-
-
-/*
-{
-    "_id": "U000",
-    "username": "username"
-    ,"password": "password",
-    "email": "mail.mail@mail.mail",
-    "local": "local"
-}
-    
-*/

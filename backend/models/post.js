@@ -7,7 +7,7 @@ const PostSchema = new mongoose.Schema({
   price: { type: Number, required: true },
   for_trade: { type: Boolean, required: true },
   prod_local: { type: String, required: true },
-  status: { type: String, required: true } // Add this line
+  status: { type: String, required: true } 
 });
 
 module.exports = mongoose.model('Post', PostSchema);

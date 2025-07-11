@@ -1,10 +1,11 @@
-/// need to create offer controller 1stconst express = require('express');
+const express = require('express');
 const router = express.Router();
-const { createOffer, getOffersForOwner } = require('./offer.controller');
+const offerController = require('../../api/offer/offer.controller');
 
-router.post('/create', createOffer);
+// Route to create a new offer
+router.post('/', offerController.createOffer);
 
-// Get all offers for a specific owner
-router.get('/owner/:owner_id', getOffersForOwner);
+// Route to get offers for a specific owner
+router.get('/owner/:owner_id', offerController.getOffersForOwner);
 
 module.exports = router;

@@ -1,4 +1,6 @@
 import React from 'react';
+import { MdOutlineChangeCircle } from "react-icons/md";
+
 
 export default function CardItem({name, price, date, location}) {
 

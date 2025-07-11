@@ -1,5 +1,5 @@
-const Product = require('../../../models/Product');
-const Post = require('../../../models/Post');
+const Product = require('../../models/product');
+const Post = require('../../models/post');
 
 exports.createPost = async(req, res) =>{
     try{

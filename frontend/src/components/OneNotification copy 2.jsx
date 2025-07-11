@@ -1,13 +1,11 @@
-export default function OneNotificationAccepted() {
+export default function OneNotificationRejected() {
   return (
     <div className="bg-purple-800/10 mt-2 mb-2 p-4 rounded-xl">
       <div className="grid grid-cols-3 gap-4 items-center">
      
         <div className="col-span-2 flex flex-col justify-between h-full">
-          <h1 className="font-bowlby text-2xl text-purple-800 mb-2">Oferta Aceite</h1>
-          <p className="mb-4">Aceitou a oferta de <b>Username.</b> </p>
-          <p></p>
-        
+          <h1 className="font-bowlby text-2xl text-purple-800 mb-2">Oferta Recusada</h1>
+          <p className="mb-4">Recusou a oferta de <b>Username</b>.</p>
         </div>
     
         <div className="flex justify-center items-center h-full">

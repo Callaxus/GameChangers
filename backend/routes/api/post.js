@@ -1,7 +1,11 @@
 const express = require('express');
 const router = express.Router();
-const { createPost } = require('./post.controller');
+const postController = require('../../api/post/post.controller');
 
-router.post('/create', createPost);
+// Use the controller methods
+router.post('/create', postController.createPost);
+// Add other routes as needed, e.g.:
+// router.put('/:id', postController.updatePost);
+// router.delete('/:id', postController.deletePost);
 
 module.exports = router;
