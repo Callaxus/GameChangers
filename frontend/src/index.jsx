@@ -12,7 +12,8 @@ import './index.css';
 import reportWebVitals from './reportWebVitals';
 import ExplorePage from './components/ExplorePage';
 import Notification from './components/NotificationsTab';
-
+import Categorias from './components/TodasCategorias';
+import CriarAnuncio from './components/CriarAnuncio';
 
 
 const router = createBrowserRouter([
@@ -39,7 +40,15 @@ const router = createBrowserRouter([
   {
     path: "/notifications",
     element: <Notification/>,
-  }
+  },
+   {
+    path: "/categorias",
+    element: <Categorias/>,
+  },
+  {
+    path: "/criar_anuncio",
+    element: <CriarAnuncio/>,
+  },
 ]);
 
 

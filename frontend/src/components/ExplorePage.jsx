@@ -22,8 +22,13 @@ import pkmimg from "../CategoriasImg/magic.png";
 import yghImg from "../CategoriasImg/magic.png";
 import plushImg from "../CategoriasImg/magic.png";
 import figImg from "../CategoriasImg/magic.png";
+import { useNavigate } from 'react-router-dom';
+
 
 export default function ExplorePage (props){
+    
+     const navigate = useNavigate();
+ 
     return (
         <div 
         className="bg-orange-100 w-screen min-h-screen">
@@ -46,17 +51,18 @@ export default function ExplorePage (props){
                     className="flex-grow px-4 py-2 rounded-l-lg border border-purple-800
                      focus:outline-none text-base">
                     </input>
-                        <button 
+                        <button
                         type="submit" 
                         className="flex items-center justify-center px-4 py-2 
                         rounded-r-lg border border-purple-800 bg-purple-800
-                         text-white hover:bg-purple-900 transition-colors">
+                         text-white hover:bg-purple-900 transition-colors" >
                             <CiSearch size={22}/>
                         </button>
                 </form>
             </div>
             <button 
-            className="flex items-center justify-center px-4 py-2 text-purple-800 me-2">
+            className="flex items-center justify-center px-4 py-2 text-purple-800 me-2"
+            onClick={() => navigate('/notifications')}>
             <GoBell size={30}/>
             </button>
         </div>
@@ -64,8 +70,15 @@ export default function ExplorePage (props){
 
         <div id="scrolling-wrapper"  className="w-md">
             <div id="scrolling-wrapper-flexbox" className="w-md bg-orange-400 text-white pt-[1rem] pb-2"> 
-                <h1 className="font-bowlby text-xl tracking-wider m-2 ms-5">Explore as nossas categorias</h1>
+                <h1 className="font-bowlby text-2xl tracking-wider m-2 ms-5">Explore as nossas categorias</h1>
             <div className="w-md text-white overflow-x-scroll overflow-y-hidden whitespace-nowrap pl-5 pb-2 scrollbar scrollbar-thumb-orange-300 scrollbar-track-orange-400">
+               <button 
+               onClick={() => navigate('/categorias')}>
+                <Category 
+              imgSrc = {'/logoRoxo.png'}
+              title = "Todas as Categorias"
+              />
+              </button>
               <Category 
               imgSrc = {magicImg}
               title = "Magic: The Gathering"/>
