@@ -1,4 +1,6 @@
 import React from 'react';
+import { MdOutlineChangeCircle } from "react-icons/md";
+
 
 export default function CardItem() {
   return (
@@ -11,10 +13,11 @@ export default function CardItem() {
         <div className="flex-wrap
          place-content-between p-2">
         <h2 className="text-stone-950 font-semibold text-2xl">Carta Muito Boa</h2>
+        <div className="flex items-center gap-2 text-purple-800 mb-1">
         <h3 className="text-purple-950 font-semibold text-2xl">3,33€</h3>
+        <div className="text-purple-800"><MdOutlineChangeCircle size={30}/></div>
+        </div>
         <h4 className="text-stone-950 text-s">Lisboa, há 5 dias</h4>
-        <h4 className="text-white font-bowlby text-xl bg-orange-500 mt-2 p-1 rounded-xl text-center">Para Venda</h4>
-        <h4 className="text-white font-bowlby text-xl bg-purple-800 mt-2 p-1 rounded-xl text-center">Para Troca</h4>
       </div>
     </div>
   );

@@ -1,13 +1,15 @@
-export default function OneNotificationAccepted() {
+export default function OneOfferNotification() {
   return (
     <div className="bg-purple-800/10 mt-2 mb-2 p-4 rounded-xl">
       <div className="grid grid-cols-3 gap-4 items-center">
      
         <div className="col-span-2 flex flex-col justify-between h-full">
-          <h1 className="font-bowlby text-2xl text-purple-800 mb-2">Oferta Aceite</h1>
-          <p className="mb-4">Aceitou a oferta de <b>Username.</b> </p>
-          <p></p>
-        
+          <h1 className="font-bowlby text-2xl text-purple-800 mb-2">Nova Oferta Recebida</h1>
+          <p className="mb-4"><b>Username</b> está interessado no seu produto X.</p>
+          <div className="flex gap-2">
+            <button className="bg-purple-500 font-bold rounded-xl text-white text-lg flex-1">Contactar</button>
+            <button className="border-purple-800 font-semibold border-2  rounded-xl text-lg flex-1">Recusar contato</button>
+          </div>
         </div>
     
         <div className="flex justify-center items-center h-full">
