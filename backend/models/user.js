@@ -18,7 +18,7 @@ module.exports = mongoose.model('User', UserSchema);
     "_id": "U000",
     "username": "username"
     ,"password": "password",
-    "email": "mail.mail@mail.mail",
+    "email": "mail.mail@mail.com",
     "local": "local"
 }
     
