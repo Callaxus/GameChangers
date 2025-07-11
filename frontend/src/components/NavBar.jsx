@@ -1,4 +1,3 @@
-import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { BsPlusCircle } from "react-icons/bs";
 import { FaRegUser } from "react-icons/fa";

@@ -11,7 +11,11 @@ import Perfil from './components/Perfil';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 import ExplorePage from './components/ExplorePage';
+<<<<<<< HEAD
 
+=======
+import Notification from './components/NotificationsTab';
+>>>>>>> 3e7eabcba6dde4173d45d9577ecff677143711eb
 
 
 
@@ -28,15 +32,24 @@ const router = createBrowserRouter([
     path: "/novaconta",
     element: <NovaConta/>,
   },
-   {
+  {
     path: "/perfil",
     element: <Perfil/>,
   },
   {
     path: "/explore",
+<<<<<<< HEAD
     element: <ExplorePage />,
   }
   
+=======
+    element: <ExplorePage/>,
+  },
+  {
+    path: "/notifications",
+    element: <Notification/>,
+  }
+>>>>>>> 3e7eabcba6dde4173d45d9577ecff677143711eb
 ]);
 
 

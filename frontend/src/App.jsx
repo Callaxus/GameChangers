@@ -1,14 +1,13 @@
 import { useRoute, Router, useNavigate } from 'react-router-dom';
 import './App.css'
 import './index.css'
-import ExplorePage from './components/ExplorePage';
 
 function App() {
   const navigate = useNavigate();
   return (
     <div className="min-h-screen w-full bg-orange-400 flex flex-col justify-between">
       <header className="flex-1 flex items-center justify-center">
-        <div className='flex items-center rounded-xl p-12 bg-orange-400'>
+        <div className='flex grid items-center rounded-xl p-12 bg-orange-400'>
           
             <img className='flex justify-center' src='/logoRoxo.png' alt='logoroxo'/>
 
@@ -26,4 +25,3 @@ function App() {
 }
 
 export default App;
-
