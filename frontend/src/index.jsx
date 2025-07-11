@@ -10,6 +10,7 @@ import NovaConta from './components/NovaConta';
 import Perfil from './components/Perfil';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
+import ExplorePage from './components/ExplorePage';
 
 
 
@@ -31,6 +32,10 @@ const router = createBrowserRouter([
     path: "/perfil",
     element: <Perfil/>,
   },
+  {
+    path: "/explore",
+    element: <ExplorePage />,
+  }
   
 ]);
 
