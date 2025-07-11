@@ -8,6 +8,30 @@ const navigate = useNavigate();
 
 const [selectedFile, setSelectedFile] = useState(null);
 const [preview, setPreview] = useState(null);
+const [selectedCategory, setSelectedCategory] = useState('');
+const [isCategoryOpen, setIsCategoryOpen] = useState(false);
+
+const categorias = [
+    { id: 1, title: 'Magic: The Gathering',},
+    { id: 2, title: 'Cartas Pokemon',},
+    { id: 3, title: 'Cartas Yu-gi-oh',},
+    { id: 4, title: 'Ps5',},
+    { id: 5, title: 'Ps4',},
+    { id: 6, title: 'PS3',},
+    { id: 7, title: 'Ps2',},
+    { id: 8, title: 'PsP',},
+    { id: 9, title: 'Ps Vita',},
+    { id: 10, title: 'Nintendo Switch',},
+    { id: 11, title: 'Nintendo Switch 2',},
+    { id: 12, title: 'Nintendo DS',},
+    { id: 13, title: 'Nintendo 3DS',},
+    { id: 14, title: 'Xbox One',},
+    { id: 15, title: 'Xbox 360',},
+    { id: 16, title: 'Xbos Series X',},
+    { id: 17, title: 'Xbos Series OS',},
+    { id: 18, title: 'Peluches',},
+    { id: 19, title: 'Figuras',}
+];
 
 
      const handleFileChange = (event) => {
@@ -37,37 +61,91 @@ const [preview, setPreview] = useState(null);
     alert("Foto guardada com sucesso!");
   };
     return(
-        <div>
-                       <div id='seta' className='bg-orange-100 align-center text-purple-800 p-2 flex items-center justify-between' style={{ height: '15vh' }} onClick={() => navigate('/explore') }>
+            <div>
+                <div id='seta' className='bg-orange-100 align-center text-purple-800 p-2 flex items-center justify-between' style={{ height: '15vh' }} onClick={() => navigate('/explore') }>
                          <IoReturnUpBackOutline size={30}/>
                          <h1 className="font-bowlby pl-5 text-right text-4xl text-purple-900">Cria um novo anúncio</h1>
-        </div>   
-          <div className="bg-stone-200">
-                <div id="form">
-                    <h2 className="text-2xl font-semibold text-stone-950 text-center p-5">Adiciona Uma Foto</h2>
-                    <form onSubmit={handleSubmit}>
-                        <input
-                            type="file"
-                            accept="image/*"
-                            onChange={handleFileChange} 
-                            className=""
-                        />
-                        {preview && (
-                            <img 
-                                src={preview} 
-                                alt="Preview" 
-                                style={{ width: "200px", marginTop: "10px" }} 
-                            />
-                        )}
-                        
-                    <button
-                        type="submit"
-                        style={{ marginTop: "10px" }}
-                        className="bg-stone-300 p-3 rounded-lg">
-                        Adicionar
-                    </button>
-                </form>
+                </div>   
+                        <div className="bg-stone-200 text-center">
+                            <div id="form">
+                                <form onSubmit={handleSubmit}>
+                                    <input
+                                    type="file"
+                                    accept="image/*"
+                                    onChange={handleFileChange} 
+                                    className="hidden"
+                                    id="photo-upload"
+                                    />
+                      
+                                {preview && (
+                                    <img 
+                                        src={preview} 
+                                        alt="Preview" 
+                                        className="mt-10 w-full "/>
+                            )}
+
+                        <div className="flex gap-4 justify-center m-5 p-5">
+                            <label
+                            htmlFor="photo-upload"
+                            className="bg-purple-800 hover:bg-purple-900/20 border-2 border-purple-800 text-white px-6 py-4 rounded-xl cursor-pointer inline-flex items-center gap-3 transition-colors font-bowlby">
+                            Adicionar Foto
+                            </label>
+
+                            <button
+                            type="submit"
+                            className="bg-purple-800/10 hover:bg-purple-800/20 border-2 border-purple-800 text-purple-800 px-6 py-4 rounded-xl cursor-pointer inline-flex items-center gap-3 transition-colors font-bowlby">
+                            Confirmar
+                            </button>
+                        </div>
+                    </form>
+                    
                 </div>
+            </div>
+            <div className="flex flex-col">
+                <label
+                for="title"
+                className="text-purple-900 text-xl ms-5 mb-1">
+                    Título do Anúncio
+                </label>
+                <input 
+                id="title"
+                type="text"
+                className="mb-4 bg-purple-100 border-2 border-purple-900
+                 rounded-xl mx-5 px-2 py-2"
+                placeholder="Escreve aqui o título do teu anúncio">
+                </input>
+
+                 <label for="description"
+                className="text-purple-900 text-xl ms-5 mb-1">
+                    Descrição do Anúncio
+                </label>
+                <textarea id="description"
+                className="mb-4 bg-purple-100 border-2 border-purple-900
+                 rounded-xl mx-5 px-2 py-2"
+                placeholder="Escreve aqui o título do teu anúncio">
+                </textarea>
+
+                {/*Categorias*/}
+
+
+                <div className="mb-4">
+                    <label className="block text-purple-800 text-xl mb-2 mx-5">Categoria:</label>
+                        <select 
+                            value={selectedCategory}
+                            onChange={(e) => setSelectedCategory(e.target.value)}
+                            className="p-3 border-2 border-purple-800 rounded-lg bg-purple-800/10 mx-5 focus:border-purple-500"
+                        >
+                    <option 
+                    value=""
+                    >Selecione uma categoria...
+                    </option>
+                    {categorias.map(cat => (
+                    <option key={cat.id} value={cat.title}>{cat.title}</option>
+                ))}
+                 </select>
+            </div>
+        </div>
+
 
                 
                 {/* Debug info to visualize state */}
@@ -78,6 +156,6 @@ const [preview, setPreview] = useState(null);
                     <p>Preview: {preview ? "Image loaded" : "null"}</p>
                 </div>
             </div>
-     </div>
+ 
     )
 }
