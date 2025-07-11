@@ -1,4 +1,6 @@
-/// need to create offer controller 1stconst express = require('express');
+/// need to create offer controller 1st
+
+const express = require('express');
 const router = express.Router();
 const { createOffer, getOffersForOwner } = require('./offer.controller');
 

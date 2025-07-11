@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const postController = require('../../../api/post/post.controller');
+const postController = require('../../api/post/post.controller');
 
 // Use the controller methods
 router.post('/create', postController.createPost);

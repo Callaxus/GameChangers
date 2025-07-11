@@ -2,17 +2,17 @@
   "name": "mern-template",
   "version": "1.0.0",
   "description": "template structure for a MERN stack project",
-  "main": "app.js",
+  "main": "server.js",
   "scripts": {
-    "start": "node app.js",
-    "app": "nodemon app.js",
+    "start": "node server.js",
+    "app": "nodemon server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Beomar97/mern-template.git"
   },
-  "author": "Marco Forster",
+  "author": "Grupo 4",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/Beomar97/mern-template/issues"
