@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+{/*import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 
 const GridMotion = ({ items = [], gradientColor = 'black' }) => {
@@ -95,4 +95,4 @@ const GridMotion = ({ items = [], gradientColor = 'black' }) => {
   );
 };
 
-export default GridMotion;
+export default GridMotion; */}
