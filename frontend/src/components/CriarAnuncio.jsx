@@ -157,10 +157,10 @@ const categorias = [
                 </div>
                 <div>
                 <label
-                for="vendendo">
+                for="troca">
                     Colocar para troca?
                 </label>
-                <input id="vendendo" type="checkbox"
+                <input id="troca" type="checkbox"
                 className="">
                 </input>
                 </div>
