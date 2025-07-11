@@ -5,13 +5,15 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import App from './App';
+import CriarAnuncio from './components/CriarAnuncio';
+import ExplorePage from './components/ExplorePage';
 import LoginPage from './components/LoginPage';
+import Notification from './components/NotificationsTab';
 import NovaConta from './components/NovaConta';
 import Perfil from './components/Perfil';
+import Categorias from './components/TodasCategorias';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import ExplorePage from './components/ExplorePage';
-import Notification from './components/NotificationsTab';
 
 
 
@@ -39,6 +41,14 @@ const router = createBrowserRouter([
   {
     path: "/notifications",
     element: <Notification/>,
+  },
+   {
+    path: "/categorias",
+    element: <Categorias/>,
+  },
+   {
+    path: "/criar-anuncio",
+    element: <CriarAnuncio/>,
   }
 ]);
 

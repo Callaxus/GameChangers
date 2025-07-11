@@ -142,9 +142,30 @@ const categorias = [
                     {categorias.map(cat => (
                     <option key={cat.id} value={cat.title}>{cat.title}</option>
                 ))}
-                 </select>
-            </div>
+                        </select>
+                </div>
+
+                <div
+                className="ms-5">
+                <label
+                for="vendendo">
+                    Colocar para venda?
+                </label>
+                <input id="vendendo" type="checkbox"
+                className="">
+                </input>
+                </div>
+                <div>
+                <label
+                for="vendendo">
+                    Colocar para troca?
+                </label>
+                <input id="vendendo" type="checkbox"
+                className="">
+                </input>
+                </div>
         </div>
+
 
 
                 
