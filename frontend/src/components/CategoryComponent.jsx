@@ -121,5 +121,7 @@ return (
                             title="Figuras" 
                             link = "/categorias"/>
                     </div>
+                </div>
+            </div>
 )
         }
