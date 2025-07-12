@@ -1,9 +1,9 @@
 import { useNavigate } from 'react-router-dom';
 import './App.css'
 import './index.css'
-import GridMotion from './components/GridMotion';
+import GridMotion from './components/GridMotion.jsx';
 
-function App() {
+export default function App() {
   const navigate = useNavigate();
   const items = [
     'Item 1',
@@ -12,22 +12,22 @@ function App() {
     , 'Item 2',
     <div key='jsx-item-2'>Custom JSX Content</div>,
     'Item 4',
-    <div key='jsx-item-2'>Custom JSX Content</div>,
+    <div key='jsx-item-3'>Custom JSX Content</div>,
     'https://images.unsplash.com/photo-1509198397868-475647b2a1e5?q=80&w=647&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     'Item 5',
-    <div key='jsx-item-2'>Custom JSX Content</div>,
+    <div key='jsx-item-4'>Custom JSX Content</div>,
     'Item 7',
-    <div key='jsx-item-2'>Custom JSX Content</div>,
+    <div key='jsx-item-5'>Custom JSX Content</div>,
     "https://images.unsplash.com/photo-1531594896955-305cf81269f1?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     'Item 8',
-    <div key='jsx-item-2'>Custom JSX Content</div>,
+    <div key='jsx-item-6'>Custom JSX Content</div>,
     'Item 10',
-    <div key='jsx-item-3'>Custom JSX Content</div>,
+    <div key='jsx-item-7'>Custom JSX Content</div>,
     'https://images.unsplash.com/photo-1723403804231-f4e9b515fe9d?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     'Item 11',
-    <div key='jsx-item-2'>Custom JSX Content</div>,
+    <div key='jsx-item-8'>Custom JSX Content</div>,
     'Item 13',
-    <div key='jsx-item-4'>Custom JSX Content</div>,
+    <div key='jsx-item-9'>Custom JSX Content</div>,
     'https://images.unsplash.com/photo-1723403804231-f4e9b515fe9d?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     'Item 14',
     // Add more items as needed
@@ -41,7 +41,7 @@ function App() {
         </div>
       </div>
       <header className="flex-1 flex items-center justify-center">
-        <div className='flex grid items-center rounded-xl p-12 bg-orange-400 bg-opacity-50'>
+        <div className='flex items-center rounded-xl p-12 bg-orange-400 bg-opacity-50'>
           <img className='flex justify-center' src='/logoRoxo.png' alt='logoroxo' />
           <h1 className='flex justify-center text-purple-900 text-5xl font-bowlby'>GameChangers</h1>
           <p className='flex justify-center font-open text-purple-900'>Marketplace de troca e venda de Jogos e Cartas</p>
@@ -55,5 +55,3 @@ function App() {
     </div>
   );
 }
-
-export default App;
