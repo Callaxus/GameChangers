@@ -17,10 +17,14 @@ app.get('/', (req, res) => res.send('Hello world!'));
 
 // API routes
 app.use('/api/post', require('./routes/api/post.js'));
-app.use('/api/notifications', require('./api/notifications/notification.routes'));
+app.use('/api/notification', require('./routes/api/notification'));
 app.use('/api/auth', require('./api/auth/auth.routes.js'));
 app.use('/api/offer', require('./routes/api/offer.js'));
 app.use('/api/user', require('./routes/api/user'));
+app.use('/api/favorite', require('./routes/api/favorite'));
+app.use('/api/report', require('./routes/api/report'));
+app.use('/api/admin', require('./routes/api/admin'));
+
 // app.use('/api/ads', require('./routes/ads'));
 
 // 404 handler

@@ -1,5 +1,5 @@
 // é isto 
-const User = require('../../models/User');
+const User = require('../../models/user');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const config = require('config');
@@ -52,6 +52,41 @@ exports.login = async (req, res) => {
       }
     );
   } catch (err) {
+    res.status(500).send('Server error');
+  }
+};
+// --- Get Profile ---
+exports.getProfile = async (req, res) => {
+  try {
+    const user = await User.findById(req.user.id).select('-password');
+    if (!user) return res.status(404).json({ msg: 'User not found' });
+    res.json(user);
+  } catch (err) {
+    console.error('Error fetching profile:', err.message);
+    res.status(500).send('Server error');
+  }
+};
+
+// --- Update Profile ---
+exports.updateProfile = async (req, res) => {
+  const { username, email, local } = req.body;
+
+  const updates = {};
+  if (username) updates.username = username;
+  if (email) updates.email = email;
+  if (local) updates.local = local;
+
+  try {
+    const user = await User.findByIdAndUpdate(
+      req.user.id,
+      { $set: updates },
+      { new: true, runValidators: true }
+    ).select('-password');
+
+    if (!user) return res.status(404).json({ msg: 'User not found' });
+    res.json(user);
+  } catch (err) {
+    console.error('Error updating profile:', err.message);
     res.status(500).send('Server error');
   }
 };
