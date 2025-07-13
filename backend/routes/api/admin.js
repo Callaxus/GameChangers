@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const adminController = require('../../api/admin/admin.controller');
 const auth = require('../../api/auth/auth.middleware');
-const adminOnly = require('../../api/auth/admin.middleware'); // Protect admin routes
+const adminOnly = require('../../api/admin/admin.middleware'); // Protect admin routes
 
 // User management
 router.get('/users', auth, adminOnly, adminController.getAllUsers);

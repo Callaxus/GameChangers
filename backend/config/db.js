@@ -4,10 +4,7 @@ const db = process.env.MONGO_URI; // Get DB URI from .env
 
 const connectDB = async () => {
   try {
-    await mongoose.connect(db, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true
-    });
+    await mongoose.connect(db);
 
     console.log('Connected to the Holy Database(MongoDb)');
   } catch (err) {

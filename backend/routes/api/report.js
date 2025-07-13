@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const reportController = require('../../api/report/report.controller');
 const auth = require('../../api/auth/auth.middleware'); // JWT auth
-const adminOnly = require('../../api/auth/admin.middleware'); // Admin check
+const adminOnly = require('../../api/admin/admin.middleware'); // Admin check
 
 // Create a new report (any logged-in user)
 router.post('/', auth, reportController.createReport);

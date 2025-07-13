@@ -1,20 +1,25 @@
-require('dotenv').config();
 const User = require('../../models/user');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+require('dotenv').config();
 
-// Use .env values
 const jwtSecret = process.env.JWT_SECRET;
-const jwtExpiresIn = process.env.JWT_EXPIRES_IN || '1h';
+const jwtExpiresIn = process.env.JWT_EXPIRES_IN;
 
 // --- Register ---
 exports.register = async (req, res) => {
-  const { _id, username, email, password, local } = req.body;
+  const { _id, username, email, password, local, phone } = req.body;
+
+  // Enforce phone presence
+  if (!phone) {
+    return res.status(400).json({ msg: 'Phone number is required' });
+  }
+
   try {
     let user = await User.findOne({ email });
     if (user) return res.status(400).json({ msg: 'User already exists' });
 
-    user = new User({ _id, username, email, password, local });
+    user = new User({ _id, username, email, password, local, phone });
 
     const salt = await bcrypt.genSalt(10);
     user.password = await bcrypt.hash(password, salt);
@@ -32,7 +37,7 @@ exports.register = async (req, res) => {
       }
     );
   } catch (err) {
-    console.error('Error registering user:', err.message);
+    console.error('Error during registration:', err.message);
     res.status(500).send('Server error');
   }
 };
@@ -58,7 +63,7 @@ exports.login = async (req, res) => {
       }
     );
   } catch (err) {
-    console.error('Error logging in user:', err.message);
+    console.error('Error during login:', err.message);
     res.status(500).send('Server error');
   }
 };
@@ -77,12 +82,13 @@ exports.getProfile = async (req, res) => {
 
 // --- Update Profile ---
 exports.updateProfile = async (req, res) => {
-  const { username, email, local } = req.body;
+  const { username, email, local, phone } = req.body;
 
   const updates = {};
   if (username) updates.username = username;
-  if (email) updates.email = email;
-  if (local) updates.local = local;
+  if (email)    updates.email = email;
+  if (local)    updates.local = local;
+  if (phone)    updates.phone = phone; // Allow updating phone
 
   try {
     const user = await User.findByIdAndUpdate(
