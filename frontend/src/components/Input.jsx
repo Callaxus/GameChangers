@@ -1,4 +1,4 @@
-export default function Input({title, placeholder, type = "text", value, onChange, showTitle = true}) {
+export default function Input({title, placeholder,name, id, type = "text", value, onChange, showTitle = true}) {
     return (
         <div className="flex-1">
             
@@ -8,6 +8,8 @@ export default function Input({title, placeholder, type = "text", value, onChang
                 type={type} 
                 value={value} 
                 onChange={onChange}
+                name={name}
+                id={id}
             />
         </div>
     )

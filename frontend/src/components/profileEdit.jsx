@@ -12,7 +12,7 @@ export default function ProfileEdit() {
             id='perfiledit'
             className="w-full text-purple-900 flex flex-col items-start bg-orange-100 leading-relaxed space-y-4 p-4"
         >
-            {/* Email Row */}
+            {/* Email */}
             <div className="flex items-center justify-between w-full px-4">
                 <p className="font-semibold min-w-fit mr-4">Email:</p>
                 <div className="flex-1">
@@ -24,7 +24,7 @@ export default function ProfileEdit() {
                 </div>
             </div>
 
-            {/* Telefone Row */}
+            {/* Telefone */}
             <div className="flex items-center justify-between w-full px-4">
                 <p className="font-semibold min-w-fit mr-4">Telefone:</p>
                 <div className="flex-1">
@@ -36,7 +36,7 @@ export default function ProfileEdit() {
                 </div>
             </div>
 
-            {/* Região Row */}
+            {/* Região */}
             <div className="flex items-center justify-between w-full px-4">
                 <p className="font-semibold min-w-fit mr-4">Região:</p>
                 <div className="flex-1">
@@ -48,7 +48,7 @@ export default function ProfileEdit() {
                 </div>
             </div>
 
-            {/* Senha Row */}
+            {/* Senha */}
             <div className="flex items-center justify-between w-full px-4">
                 <p className="font-semibold min-w-fit mr-4">Senha:</p>
                 <div className="flex-1">
