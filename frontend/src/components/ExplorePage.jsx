@@ -46,7 +46,7 @@ export default function ExplorePage(props) {
 
     return (
         <div
-            className="bg-orange-100 w-screen min-h-screen">
+            className="bg-white w-screen min-h-screen">
             <h2
                 className="font-bowlby pt-5 pr-4 text-right text-4xl text-purple-800">
                 Gamechangers
@@ -81,7 +81,7 @@ export default function ExplorePage(props) {
                     <GoBell size={30} />
                 </button>
             </div>
-
+           
 
             <div 
             id="scrolling-wrapper" 
@@ -194,6 +194,7 @@ export default function ExplorePage(props) {
                             price={item.price}
                             date={item.date}
                             location={item.location}
+                            onClick={() => navigate('/produto/$produtoID')}
                         />
                     ))}
                 </div>
