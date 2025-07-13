@@ -1,10 +1,13 @@
-// é isto 
 require('dotenv').config();
 const User = require('../../models/user');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const config = require('config');
 
+// Use .env values
+const jwtSecret = process.env.JWT_SECRET;
+const jwtExpiresIn = process.env.JWT_EXPIRES_IN || '1h';
+
+// --- Register ---
 exports.register = async (req, res) => {
   const { _id, username, email, password, local } = req.body;
   try {
@@ -21,7 +24,7 @@ exports.register = async (req, res) => {
     const payload = { user: { id: user._id } };
     jwt.sign(
       payload,
-      config.get('jwtSecret'),
+      jwtSecret,
       { expiresIn: jwtExpiresIn },
       (err, token) => {
         if (err) throw err;
@@ -29,10 +32,12 @@ exports.register = async (req, res) => {
       }
     );
   } catch (err) {
+    console.error('Error registering user:', err.message);
     res.status(500).send('Server error');
   }
 };
 
+// --- Login ---
 exports.login = async (req, res) => {
   const { email, password } = req.body;
   try {
@@ -45,7 +50,7 @@ exports.login = async (req, res) => {
     const payload = { user: { id: user._id } };
     jwt.sign(
       payload,
-      config.get('jwtSecret'),
+      jwtSecret,
       { expiresIn: jwtExpiresIn },
       (err, token) => {
         if (err) throw err;
@@ -53,9 +58,11 @@ exports.login = async (req, res) => {
       }
     );
   } catch (err) {
+    console.error('Error logging in user:', err.message);
     res.status(500).send('Server error');
   }
 };
+
 // --- Get Profile ---
 exports.getProfile = async (req, res) => {
   try {

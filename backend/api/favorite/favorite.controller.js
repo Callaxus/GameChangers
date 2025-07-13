@@ -1,4 +1,5 @@
 const Favorite = require('../../models/favorite');
+const Post = require('../../models/post');
 
 // Add a post to favorites
 exports.addFavorite = async (req, res) => {
@@ -22,8 +23,22 @@ exports.addFavorite = async (req, res) => {
 // Get all favorites for the logged-in user
 exports.getFavorites = async (req, res) => {
   try {
-    const favorites = await Favorite.find({ userId: req.user.id }).populate('postId');
-    res.json(favorites);
+    const favorites = await Favorite.find({ userId: req.user.id });
+
+    // Manually fetch full post data for each favorite
+    const enrichedFavorites = await Promise.all(
+      favorites.map(async (fav) => {
+        const post = await Post.findById(fav.postId);
+        return {
+          _id: fav._id,
+          userId: fav.userId,
+          postId: fav.postId,
+          post: post || null // Include full post data if found
+        };
+      })
+    );
+
+    res.json(enrichedFavorites);
   } catch (err) {
     console.error('Error fetching favorites:', err.message);
     res.status(500).json({ error: err.message });

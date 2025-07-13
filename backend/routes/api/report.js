@@ -1,15 +1,16 @@
 const express = require('express');
 const router = express.Router();
 const reportController = require('../../api/report/report.controller');
-const authMiddleware = require('../../api/auth/auth.middleware');
+const auth = require('../../api/auth/auth.middleware'); // JWT auth
+const adminOnly = require('../../api/auth/admin.middleware'); // Admin check
 
-// Create a report (protected)
-router.post('/', authMiddleware, reportController.createReport);
+// Create a new report (any logged-in user)
+router.post('/', auth, reportController.createReport);
 
-// Get all reports (admin-only, needs role check)
-router.get('/', authMiddleware, reportController.getAllReports);
+// Get all reports (admin-only)
+router.get('/', auth, adminOnly, reportController.getAllReports);
 
-// Update report status (admin-only, needs role check)
-router.put('/:id', authMiddleware, reportController.updateReportStatus);
+// Update a report's status (admin-only)
+router.put('/:id/status', auth, adminOnly, reportController.updateReportStatus);
 
 module.exports = router;
