@@ -1,4 +1,6 @@
+import React from 'react'
 import GridMotion from './GridMotion';
+
   
 // note: you'll need to make sure the parent container of this component is sized properly
 const items = [

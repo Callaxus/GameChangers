@@ -1,10 +1,14 @@
-export default function Input({title, placeholder, type, value, onChange}) {
+export default function Input({title, placeholder, type = "text", value, onChange, showTitle = true}) {
     return (
-        <div>
-            <h2 className="text-purple-900 ">
-                {title}
-            </h2>
-            <input className="mb-4 bg-purple-100 border-2 border-purple-900 rounded-xl w-72 px-2 py-2" placeholder={placeholder} type={type} value={value} onChange={onChange}/>
+        <div className="flex-1">
+            
+            <input 
+                className="bg-purple-100 border-2 border-purple-900 rounded-xl w-full px-2 py-2 focus:outline-none focus:border-purple-700" 
+                placeholder={placeholder} 
+                type={type} 
+                value={value} 
+                onChange={onChange}
+            />
         </div>
     )
 }

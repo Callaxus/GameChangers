@@ -1,6 +1,6 @@
 import React from 'react';
 import { MdOutlineChangeCircle } from "react-icons/md";
-import { Navigate, useNavigate } from "react-router-dom";
+import { navigate, useNavigate } from "react-router-dom";
 
 
 
