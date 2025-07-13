@@ -39,6 +39,7 @@ export default function NovaConta() {
         <>
             <div id='seta' className='bg-orange-400 p-2 flex items-center justify-between' style={{ height: '15vh' }}>
                 <button className='text-purple-900 text-4xl' onClick={() => navigate('/')}><IoReturnUpBackOutline /> </button>
+                
                 <p className='text-purple-900 text-3xl font-bowlby'>GameChangers</p>
             </div>
                 <div id='body' className=" text-purple-900 flex flex-col items-center bg-orange-200 h-screen leading-relaxed">
