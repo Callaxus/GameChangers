@@ -6,45 +6,52 @@ import { FaRegCheckCircle } from "react-icons/fa";
 export default function EditItem({ title, value, onChange }) {
     const [isEditing, setIsEditing] = useState(false);
     const [inputValue, setInputValue] = useState(value);
-    const handleEditClick = () => {setIsEditing(!isEditing);
 
+    const handleEditClick = () => {
+        setIsEditing(!isEditing);
     };
 
-    let handleInputChange = (e) => {setInputValue(e.target.value);};
+    const handleInputChange = (e) => {
+        setInputValue(e.target.value);
+    };
+
+    const handleSave = () => {
+        if (onChange) {
+            onChange(inputValue); 
+        }
+        setIsEditing(false);
+    };
 
     return (
-        <div className='leading-loose flex items-center justify-around p-2'>
+        <div className='flex items-center justify-between w-full'>
             {isEditing ? (
-                <div className='flex items-center justify-around'>
+                <div className='flex items-center justify-between w-full'>
                     <Input
                         title={title}
                         placeholder={value}
-                        value={value}
+                        value={inputValue}
                         onChange={handleInputChange}
                     />
-                    <BsPencilSquare onClick={handleEditClick} className='m-2'/>
-                    <button className='text-purple-900 ' onClick={handleEditClick}><FaRegCheckCircle /></button>
+
+                    <button 
+                        className='text-green-600 ml-2' 
+                        onClick={handleSave}
+                    >
+                        <FaRegCheckCircle size={20} />
+                    </button>
+
                 </div>
-            ) :
-                <div>
-                    <p>{value}</p>
-                    <BsPencilSquare onClick={handleEditClick}/>
-                    
+            ) : (
+                <div className='flex items-center justify-between w-full'>
+                    <span className="flex-1">{value}</span>
+                    <button 
+                        className='text-purple-900 ml-2' 
+                        onClick={handleEditClick}
+                    >
+                        <BsPencilSquare size={20} />
+                    </button>
                 </div>
-            }
+            )}
         </div>
-    )
-}
-
-// Exemplo de componente pai usando EditItem
-function ParentComponent() {
-    const [valor, setValor] = useState('');
-
-    return (
-        <EditItem
-            title="Título"
-            value={valor}
-            onChange={setValor} // <-- Passe uma função aqui!
-        />
     );
 }

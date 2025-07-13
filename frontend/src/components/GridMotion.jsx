@@ -8,7 +8,7 @@ const GridMotion = ({ items = [
   const rowRefs = useRef([]);
   const mouseXRef = useRef(window.innerWidth / 2);
 
-  const totalItems = 30;
+  const totalItems = 28;
   const defaultItems = Array.from({ length: totalItems }, (_, index) => `Item ${index + 1}`);
   const combinedItems = items.length > 0 ? items.slice(0, totalItems) : defaultItems;
 

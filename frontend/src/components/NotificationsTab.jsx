@@ -13,9 +13,11 @@ export default function Notifications() {
         <IoReturnUpBackOutline size={30}/>
         <h1 className="font-bowlby pl-5 text-right text-4xl text-purple-900">As tuas Notificações</h1>
       </div>
+      <div className="mx-2">
       <OneOfferNotification/>
       <OneNotificationAccepted/>
       <OneNotificationRejected/>
+      </div>
       </div>
     )
 }

@@ -14,6 +14,7 @@ import Perfil from './components/Perfil';
 import Categorias from './components/TodasCategorias';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
+import ProductPage from './components/ProductPage';
 
 
 
@@ -49,6 +50,10 @@ const router = createBrowserRouter([
    {
     path: "/criar-anuncio",
     element: <CriarAnuncio/>,
+  },
+  {
+    path: "/produto",
+    element: <ProductPage/>,
   }
 ]);
 

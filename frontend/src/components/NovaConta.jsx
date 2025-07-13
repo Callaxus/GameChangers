@@ -42,8 +42,9 @@ export default function NovaConta() {
                 
                 <p className='text-purple-900 text-3xl font-bowlby'>GameChangers</p>
             </div>
-                <div id='body' className=" text-purple-900 flex flex-col items-center bg-orange-200 h-screen leading-relaxed">
-                <h2 className='font-bowlby text-4xl mt-24 mb-12'> CRIAR NOVA CONTA</h2>
+
+                <div id='body' className=" text-purple-900 flex flex-col items-center h-screen leading-relaxed">
+                <h2 className='font-bowlby text-4xl mt-5 mb-5'> CRIAR NOVA CONTA</h2>
                 <Input title={"Nome"} placeholder="Nome de Usuário" onChange={(e) => setForm({ ...form, username: e.target.value })} />
                 <Input title={"Email"} placeholder="Email" onChange={(e) => setForm({ ...form, email: e.target.value })} />
                 <Input title={"Senha"} type="password" placeholder="Password" onChange={(e) => setForm({ ...form, password: e.target.value })} />

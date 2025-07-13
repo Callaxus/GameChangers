@@ -1,27 +1,37 @@
-// é isto 
-require('dotenv').config();
 const User = require('../../models/user');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const config = require('config');
+require('dotenv').config();
 
+const jwtSecret = process.env.JWT_SECRET;
+const jwtExpiresIn = process.env.JWT_EXPIRES_IN;
+
+// --- Register ---
 exports.register = async (req, res) => {
-  const { _id, username, email, password, local } = req.body;
+  console.log('Incoming register req.body:', req.body);
+
+  const { userid, username, email, password, local, phone, role } = req.body;
+  // remove role before final release, its meant for testing only
+
+  if (!phone) {
+    return res.status(400).json({ msg: 'Phone number is required' });
+  }
+
   try {
     let user = await User.findOne({ email });
     if (user) return res.status(400).json({ msg: 'User already exists' });
 
-    user = new User({ _id, username, email, password, local });
-
+    user = new User({ userid, username, email, password, local, phone, role });
+// the role field is supposed to be removes before production, its merely for testing purpuses
     const salt = await bcrypt.genSalt(10);
     user.password = await bcrypt.hash(password, salt);
 
     await user.save();
 
-    const payload = { user: { id: user._id } };
+    const payload = { user: { id: user._id } }; //  Use _id
     jwt.sign(
       payload,
-      config.get('jwtSecret'),
+      jwtSecret,
       { expiresIn: jwtExpiresIn },
       (err, token) => {
         if (err) throw err;
@@ -29,10 +39,12 @@ exports.register = async (req, res) => {
       }
     );
   } catch (err) {
+    console.error('Error during registration:', err.message);
     res.status(500).send('Server error');
   }
 };
 
+// --- Login ---
 exports.login = async (req, res) => {
   const { email, password } = req.body;
   try {
@@ -42,10 +54,10 @@ exports.login = async (req, res) => {
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) return res.status(400).json({ msg: 'Invalid Credentials' });
 
-    const payload = { user: { id: user._id } };
+    const payload = { user: { id: user._id } }; // ✅ Use _id
     jwt.sign(
       payload,
-      config.get('jwtSecret'),
+      jwtSecret,
       { expiresIn: jwtExpiresIn },
       (err, token) => {
         if (err) throw err;
@@ -53,9 +65,11 @@ exports.login = async (req, res) => {
       }
     );
   } catch (err) {
+    console.error('Error during login:', err.message);
     res.status(500).send('Server error');
   }
 };
+
 // --- Get Profile ---
 exports.getProfile = async (req, res) => {
   try {
@@ -70,12 +84,13 @@ exports.getProfile = async (req, res) => {
 
 // --- Update Profile ---
 exports.updateProfile = async (req, res) => {
-  const { username, email, local } = req.body;
+  const { username, email, local, phone } = req.body;
 
   const updates = {};
   if (username) updates.username = username;
-  if (email) updates.email = email;
-  if (local) updates.local = local;
+  if (email)    updates.email = email;
+  if (local)    updates.local = local;
+  if (phone)    updates.phone = phone;
 
   try {
     const user = await User.findByIdAndUpdate(

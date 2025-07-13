@@ -146,26 +146,37 @@ const categorias = [
                 </div>
 
                 <div
-                className="ms-5">
-                <label
-                for="vendendo">
-                    Colocar para venda?
-                </label>
-                <input id="vendendo" type="checkbox"
-                className="">
-                </input>
+                className="ms-5 text-2xl flex flex-col text-purple-800 space-y-4">
+                    <div
+                    className="flex items-center space-x-3">
+                        <label
+                            for="vendendo">
+                            Colocar para venda?
+                        </label>
+                        <input id="vendendo" type="checkbox"
+                            className="w-6 h-6 text-orange-400 bg-white border-2 border-gray-300 rounded focus:ring-orange-400 focus:ring-2 accent-orange-400">
+                        </input>        
+                        </div>
+                        <div
+                        className="flex items-center space-x-5">
+                        <label
+                            for="troca">
+                            Colocar para troca?
+                        </label>
+                        <input id="troca" type="checkbox"
+                            className="w-6 h-6 text-orange-400 bg-white border-2 border-gray-300 rounded focus:ring-orange-400 focus:ring-2 accent-orange-400">
+                        </input>
+                    </div>  
                 </div>
-                <div>
-                <label
-                for="troca">
-                    Colocar para troca?
-                </label>
-                <input id="troca" type="checkbox"
-                className="">
-                </input>
+                <div
+                className="flex justify-center">
+                    <button
+                    className="bg-orange-400 hover:bg-orange-900/50 border-2 border-orange-800 text-white px-6 py-4 rounded-xl transition-colors font-bowlby w-80 m-5">
+                        Postar Anúncio
+                    </button>
                 </div>
-        </div>
-
+                </div>
+                
 
 
                 

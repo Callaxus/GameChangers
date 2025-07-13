@@ -1,12 +1,17 @@
 import React from 'react';
 import { MdOutlineChangeCircle } from "react-icons/md";
+import { navigate, useNavigate } from "react-router-dom";
+
 
 
 export default function CardItem({name, price, date, location}) {
-
+const navigate = useNavigate();
 
   return (
-    <div className="bg-orange-200 rounded p-2 text-s flex flex-col justify-end">
+    <div 
+    className="bg-orange-100 rounded p-2 text-s flex flex-col 
+    justify-end"
+    onClick={() => navigate('/produto')}>
       <img
         src="https://imgs.search.brave.com/j8DCcsOfTn-MppPwVEJgZngpI701qlXEvB-TDeQZcbE/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9oNW0z/czV0NS5kZWxpdmVy/eS5yb2NrZXRjZG4u/bWUvd3AtY29udGVu/dC91cGxvYWRzLzIw/MjIvMDUvQ29sbGVj/dGlvbi1QaG90by1T/YW1wbGVzLTEtMjI1/eDMwMC5qcGc"
         alt=""

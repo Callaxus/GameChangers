@@ -24,6 +24,8 @@ import yghImg from "../CategoriasImg/magic.png";
 import plushImg from "../CategoriasImg/magic.png";
 import figImg from "../CategoriasImg/magic.png";
 import logo from "../CategoriasImg/logoRoxo.png"
+import { BiSolidCategoryAlt } from "react-icons/bi";
+
 
 import { useState, useEffect } from "react";
 
@@ -46,7 +48,7 @@ export default function ExplorePage(props) {
 
     return (
         <div
-            className="bg-orange-100 w-screen min-h-screen">
+            className="bg-white w-screen min-h-screen">
             <h2
                 className="font-bowlby pt-5 pr-4 text-right text-4xl text-purple-800">
                 Gamechangers
@@ -58,7 +60,7 @@ export default function ExplorePage(props) {
                     id="search"
                     className="flex-1 flex justify-center items-center">
                     <form
-                        className="flex w-full max-w-md rounded-lg p-2">
+                        className="flex w-full max-w-md rounded-lg p-2 ms-1">
                         <input
                             type="text"
                             id="searchbar"
@@ -81,7 +83,7 @@ export default function ExplorePage(props) {
                     <GoBell size={30} />
                 </button>
             </div>
-
+           
 
             <div 
             id="scrolling-wrapper" 
@@ -90,97 +92,107 @@ export default function ExplorePage(props) {
                 id="scrolling-wrapper-flexbox" 
                 className="w-md bg-orange-400 text-white pt-[1rem] pb-2">
                     <h1 
-                    className="font-bowlby text-2xl tracking-wider m-2 ms-5">
+                    className="font-bowlby text-2xl m-2 ms-5">
                         Explore as nossas categorias
                     </h1>
                     <div 
                     className="w-md text-white overflow-x-scroll overflow-y-hidden 
                     whitespace-nowrap pl-5 pb-2 scrollbar scrollbar-thumb-purple-800 
                     scrollbar-track-orange-400">
-                         <Category
-                            imgSrc={logo}
-                            title="Todas as Categorias" 
-                            link = "/categorias"/>
+
+                        {/*all categories*/}
+                             <div className="inline-block">
+                                    <button className="p-2 flex flex-col items-center" onClick={() => navigate("/categorias")}>
+                                        <div className="w-20 h-20 bg-purple-600 rounded-full flex items-center justify-center relative">
+                                            <BiSolidCategoryAlt size={40} className="text-white absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" />
+                                        </div>
+                                        <p className="w-20 text-center text-s break-words mt-2 whitespace-normal font-semibold">
+                                            Todas as Categorias
+                                        </p>
+                                    </button>
+                                </div>
+
+                        {/*filter thru categories */}
                         <Category
                             imgSrc={magicImg}
                             title="Magic: The Gathering"
-                            link = "/categorias" />
+                            link = "/categorias/cartas-magic" />
                         <Category
                             imgSrc={ps4Img}
                             title="Playstation 4" 
-                            link = "/categorias"/>
+                            link = "/categorias/ps4"/>
                         <Category
                             imgSrc={ns2Img}
                             title="Nintendo Switch 2"
-                            link = "/categorias" />
+                            link = "/categorias/nintendo-switch-2" />
                         <Category
                             imgSrc={ps5Img}
                             title="Playstation 5"
-                            link = "/categorias" />
+                            link = "/categorias/ps5" />
                         <Category
                             imgSrc={nsImg}
                             title="Nintendo Switch"
-                            link = "/categorias" />
+                            link = "/categorias/nintendo-switch" />
                         <Category
                             imgSrc={xboxsxImg}
                             title="Xbox Series X" 
-                            link = "/categorias"/>
+                            link = "/categorias/xboxsx"/>
                         <Category
                             imgSrc={xbox1Img}
                             title="Xbox One" 
-                            link = "/categorias"/>
+                            link = "/categorias/xboxOne"/>
                         <Category
                             imgSrc={xbox360Img}
                             title="Xbox 360"
-                            link = "/categorias" />
+                            link = "/categorias/xbox360" />
                         <Category
                             imgSrc={xboxsos}
                             title="Xbox Series OS" 
-                            link = "/categorias"/>
+                            link = "/categorias/xboxsos"/>
                         <Category
                             imgSrc={ps1}
                             title="Playstation 1" 
-                            link = "/categorias"/>
+                            link = "/categorias/ps1"/>
                         <Category
                             imgSrc={ps2}
                             title="Playstation 2" 
-                            link = "/categorias"/>
+                            link = "/categorias/ps2"/>
                         <Category
                             imgSrc={ps3}
                             title="Playstation 3" 
-                            link = "/categorias"/>
+                            link = "/categorias/ps3"/>
                         <Category
                             imgSrc={psp}
                             title="PSP" 
-                            link = "/categorias"/>
+                            link = "/categorias/psp"/>
                         <Category
                             imgSrc={psvita}
                             title="PS Vita" 
-                            link = "/categorias"/>
+                            link = "/categorias/ps-vita"/>
                         <Category
                             imgSrc={nds}
                             title="Nintendo DS" 
-                            link = "/categorias"/>
+                            link = "/categorias/nintendo-ds"/>
                         <Category
                             imgSrc={ds3}
                             title="Nintendo 3DS" 
-                            link = "/categorias"/>
+                            link = "/categorias/nintendo-3ds"/>
                         <Category
                             imgSrc={pkmimg}
                             title="Cartas Pokemon" 
-                            link = "/categorias"/>
+                            link = "/categorias/cartas-pokemon"/>
                         <Category
                             imgSrc={yghImg}
                             title="Cartas Yu-gi-oh" 
-                            link = "/categorias"/>
+                            link = "/categorias/cartas-yugioh"/>
                         <Category
                             imgSrc={plushImg}
                             title="Peluches" 
-                            link = "/categorias"/>
+                            link = "/categorias/peluches"/>
                         <Category
                             imgSrc={figImg}
                             title="Figuras" 
-                            link = "/categorias"/>
+                            link = "/categorias/figuras"/>
                     </div>
                 </div>
 
@@ -194,6 +206,7 @@ export default function ExplorePage(props) {
                             price={item.price}
                             date={item.date}
                             location={item.location}
+                            onClick={() => navigate('/produto/$produtoID')}
                         />
                     ))}
                 </div>

@@ -127,11 +127,11 @@ exports.deletePost = async (req, res) => {
       return res.status(404).json({ msg: 'Post not found' });
     }
 
-    if (post.user_id !== req.user.id) {
+    if (post.user_id.toString() !== req.user.id) {
       return res.status(403).json({ msg: 'Not authorized to delete this post' });
     }
 
-    await post.remove();
+    await post.deleteOne(); 
     res.json({ msg: 'Post removed' });
   } catch (err) {
     console.error(err);

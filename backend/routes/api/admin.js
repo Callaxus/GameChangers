@@ -1,19 +1,19 @@
 const express = require('express');
 const router = express.Router();
 const adminController = require('../../api/admin/admin.controller');
-const authMiddleware = require('../../api/auth/auth.middleware');
-const adminMiddleware = require('../../api/admin/admin.middleware');
+const auth = require('../../api/auth/auth.middleware');
+const adminOnly = require('../../api/admin/admin.middleware'); // Protect admin routes
 
 // User management
-router.get('/users', authMiddleware, adminMiddleware, adminController.getAllUsers);
-router.delete('/users/:id', authMiddleware, adminMiddleware, adminController.deleteUser);
+router.get('/users', auth, adminOnly, adminController.getAllUsers);
+router.delete('/users/:id', auth, adminOnly, adminController.deleteUser);
 
 // Post management
-router.get('/posts', authMiddleware, adminMiddleware, adminController.getAllPosts);
-router.delete('/posts/:id', authMiddleware, adminMiddleware, adminController.deletePost);
+router.get('/posts', auth, adminOnly, adminController.getAllPosts);
+router.delete('/posts/:id', auth, adminOnly, adminController.deletePost);
 
 // Report management
-router.get('/reports', authMiddleware, adminMiddleware, adminController.getAllReports);
-router.put('/reports/:id', authMiddleware, adminMiddleware, adminController.resolveReport);
+router.get('/reports', auth, adminOnly, adminController.getAllReports);
+router.put('/reports/:id/resolve', auth, adminOnly, adminController.resolveReport);
 
 module.exports = router;

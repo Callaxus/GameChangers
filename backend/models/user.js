@@ -10,5 +10,8 @@ const UserSchema = new mongoose.Schema({
     type: String,
     enum: ['user', 'admin'],
     default: 'user'
-  }
+  },
+  phone: { type: String, required: true }
 });
+
+module.exports = mongoose.models.User || mongoose.model('User', UserSchema);
