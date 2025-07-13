@@ -60,7 +60,7 @@ export default function ExplorePage(props) {
                     id="search"
                     className="flex-1 flex justify-center items-center">
                     <form
-                        className="flex w-full max-w-md rounded-lg p-2">
+                        className="flex w-full max-w-md rounded-lg p-2 ms-1">
                         <input
                             type="text"
                             id="searchbar"

@@ -33,7 +33,7 @@ function Perfil() {
 
             <ProfileEdit/>
             
-            <div className='bg-orange-100'>
+            <div className=''>
                 <div id="meusitens" className='text-white bg-purple-900 font-bowlby p-3 border-2 rounded-lg m-2' >
                     <div id="scrolling-wrapper" className="w-md">
                         <div id="scrolling-wrapper-flexbox" className="w-md text-white pt-[1rem] pb-2">
