@@ -8,9 +8,10 @@ const jwtExpiresIn = process.env.JWT_EXPIRES_IN;
 
 // --- Register ---
 exports.register = async (req, res) => {
-  const { _id, username, email, password, local, phone } = req.body;
+  console.log('Incoming register req.body:', req.body);
 
-  // Enforce phone presence
+  const { userid, username, email, password, local, phone } = req.body;
+
   if (!phone) {
     return res.status(400).json({ msg: 'Phone number is required' });
   }
@@ -19,14 +20,14 @@ exports.register = async (req, res) => {
     let user = await User.findOne({ email });
     if (user) return res.status(400).json({ msg: 'User already exists' });
 
-    user = new User({ _id, username, email, password, local, phone });
+    user = new User({ userid, username, email, password, local, phone });
 
     const salt = await bcrypt.genSalt(10);
     user.password = await bcrypt.hash(password, salt);
 
     await user.save();
 
-    const payload = { user: { id: user._id } };
+    const payload = { user: { id: user._id } }; // ✅ Use _id
     jwt.sign(
       payload,
       jwtSecret,
@@ -52,7 +53,7 @@ exports.login = async (req, res) => {
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) return res.status(400).json({ msg: 'Invalid Credentials' });
 
-    const payload = { user: { id: user._id } };
+    const payload = { user: { id: user._id } }; // ✅ Use _id
     jwt.sign(
       payload,
       jwtSecret,
@@ -88,7 +89,7 @@ exports.updateProfile = async (req, res) => {
   if (username) updates.username = username;
   if (email)    updates.email = email;
   if (local)    updates.local = local;
-  if (phone)    updates.phone = phone; // Allow updating phone
+  if (phone)    updates.phone = phone;
 
   try {
     const user = await User.findByIdAndUpdate(
