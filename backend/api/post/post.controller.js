@@ -1,9 +1,46 @@
 const Post = require('../../models/post');
 
-// GET /api/post - List all posts
+// GET /api/post - List all posts with optional filters/search/sorting
 exports.getAllPosts = async (req, res) => {
   try {
-    const posts = await Post.find();
+    const {
+      search,
+      category,
+      minPrice,
+      maxPrice,
+      sortBy,    // e.g., "product.price", "createdAt"
+      order      // "asc" or "desc"
+    } = req.query;
+
+    const query = {};
+
+    //  Search in product name/description
+    if (search) {
+      query.$or = [
+        { 'product.name': { $regex: search, $options: 'i' } },
+        { 'product.description': { $regex: search, $options: 'i' } }
+      ];
+    }
+
+    //  Filter by category
+    if (category) {
+      query['product.category'] = category;
+    }
+
+    //  Filter by price range
+    if (minPrice || maxPrice) {
+      query['product.price'] = {};
+      if (minPrice) query['product.price'].$gte = Number(minPrice);
+      if (maxPrice) query['product.price'].$lte = Number(maxPrice);
+    }
+
+    //  Sorting
+    const sort = {};
+    if (sortBy) {
+      sort[sortBy] = order === 'desc' ? -1 : 1;
+    }
+
+    const posts = await Post.find(query).sort(sort);
     res.json(posts);
   } catch (err) {
     console.error(err);
@@ -25,7 +62,7 @@ exports.getPostById = async (req, res) => {
   }
 };
 
-// POST /api/post - Create a new post
+// POST /api/post - Create a new post with embedded product
 exports.createPost = async (req, res) => {
   try {
     const {
@@ -63,12 +100,10 @@ exports.updatePost = async (req, res) => {
       return res.status(404).json({ msg: 'Post not found' });
     }
 
-    // Check ownership
     if (post.user_id !== req.user.id) {
       return res.status(403).json({ msg: 'Not authorized to update this post' });
     }
 
-    // Update fields
     const { price, for_trade, prod_local, status, product } = req.body;
     if (price !== undefined) post.price = price;
     if (for_trade !== undefined) post.for_trade = for_trade;
@@ -92,7 +127,6 @@ exports.deletePost = async (req, res) => {
       return res.status(404).json({ msg: 'Post not found' });
     }
 
-    // Check ownership
     if (post.user_id !== req.user.id) {
       return res.status(403).json({ msg: 'Not authorized to delete this post' });
     }
