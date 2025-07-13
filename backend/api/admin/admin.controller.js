@@ -2,10 +2,10 @@ const User = require('../../models/user');
 const Post = require('../../models/post');
 const Report = require('../../models/report');
 
-// Get all users
+// Get all users (exclude passwords)
 exports.getAllUsers = async (req, res) => {
   try {
-    const users = await User.find().select('-password'); // Exclude passwords
+    const users = await User.find().select('-password');
     res.json(users);
   } catch (err) {
     console.error('Error fetching users:', err.message);
@@ -13,7 +13,7 @@ exports.getAllUsers = async (req, res) => {
   }
 };
 
-// Delete a user
+// Delete a user by ID
 exports.deleteUser = async (req, res) => {
   try {
     const user = await User.findByIdAndDelete(req.params.id);
@@ -36,7 +36,7 @@ exports.getAllPosts = async (req, res) => {
   }
 };
 
-// Delete a post
+// Delete a post by ID
 exports.deletePost = async (req, res) => {
   try {
     const post = await Post.findByIdAndDelete(req.params.id);
@@ -51,7 +51,7 @@ exports.deletePost = async (req, res) => {
 // Get all reports
 exports.getAllReports = async (req, res) => {
   try {
-    const reports = await Report.find().populate('reporterId', 'username email');
+    const reports = await Report.find(); // Removed .populate()
     res.json(reports);
   } catch (err) {
     console.error('Error fetching reports:', err.message);
@@ -59,7 +59,7 @@ exports.getAllReports = async (req, res) => {
   }
 };
 
-// Resolve a report
+// Resolve a report by ID (mark as resolved)
 exports.resolveReport = async (req, res) => {
   try {
     const report = await Report.findByIdAndUpdate(

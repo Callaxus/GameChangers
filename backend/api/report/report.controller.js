@@ -1,4 +1,5 @@
 const Report = require('../../models/report');
+const User = require('../../models/user'); // Needed for manual lookup
 
 // Create a new report
 exports.createReport = async (req, res) => {
@@ -27,8 +28,20 @@ exports.createReport = async (req, res) => {
 // Get all reports (admin-only)
 exports.getAllReports = async (req, res) => {
   try {
-    const reports = await Report.find().populate('reporterId');
-    res.json(reports);
+    const reports = await Report.find();
+
+    // Manually enrich with reporter user info
+    const enrichedReports = await Promise.all(
+      reports.map(async (report) => {
+        const reporter = await User.findById(report.reporterId).select('username email');
+        return {
+          ...report.toObject(),
+          reporter: reporter || null // Embed reporter data
+        };
+      })
+    );
+
+    res.json(enrichedReports);
   } catch (err) {
     console.error('Error fetching reports:', err.message);
     res.status(500).json({ error: err.message });
@@ -55,3 +68,4 @@ exports.updateReportStatus = async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 };
+
