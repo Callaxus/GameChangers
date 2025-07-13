@@ -1,4 +1,5 @@
 // é isto 
+require('dotenv').config();
 const User = require('../../models/user');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
@@ -21,7 +22,7 @@ exports.register = async (req, res) => {
     jwt.sign(
       payload,
       config.get('jwtSecret'),
-      { expiresIn: 360000 },
+      { expiresIn: jwtExpiresIn },
       (err, token) => {
         if (err) throw err;
         res.json({ token });
@@ -45,7 +46,7 @@ exports.login = async (req, res) => {
     jwt.sign(
       payload,
       config.get('jwtSecret'),
-      { expiresIn: 360000 },
+      { expiresIn: jwtExpiresIn },
       (err, token) => {
         if (err) throw err;
         res.json({ token });
