@@ -1,86 +1,106 @@
-const Product = require('../../models/product');
 const Post = require('../../models/post');
 
 // GET /api/post - List all posts
 exports.getAllPosts = async (req, res) => {
   try {
-    const posts = await Post.find().populate('product_id');
+    const posts = await Post.find();
     res.json(posts);
   } catch (err) {
-    res.status(500).json({ error: err.message });
+    console.error(err);
+    res.status(500).json({ msg: 'Server error while fetching posts' });
   }
 };
 
-// GET /api/post/:id - Get single post
+// GET /api/post/:id - Get a single post by ID
 exports.getPostById = async (req, res) => {
   try {
-    const post = await Post.findById(req.params.id).populate('product_id');
-    if (!post) return res.status(404).json({ msg: 'Post not found' });
+    const post = await Post.findById(req.params.id);
+    if (!post) {
+      return res.status(404).json({ msg: 'Post not found' });
+    }
     res.json(post);
   } catch (err) {
-    res.status(500).json({ error: err.message });
+    console.error(err);
+    res.status(500).json({ msg: 'Server error while fetching post' });
   }
 };
 
-// POST /api/post - Create new post
+// POST /api/post - Create a new post
 exports.createPost = async (req, res) => {
   try {
-    const { product, post } = req.body;
+    const {
+      postid,
+      price,
+      for_trade,
+      prod_local,
+      status,
+      product
+    } = req.body;
 
-    // Create new product
-    const newProduct = new Product(product);
-    await newProduct.save();
-
-    // Create new post, bind to user
     const newPost = new Post({
-      ...post,
-      user_id: req.user.id, // From JWT
-      product_id: newProduct._id
+      postid,
+      user_id: req.user.id, // from JWT token
+      price,
+      for_trade,
+      prod_local,
+      status,
+      product
     });
-    await newPost.save();
 
-    res.status(201).json({ post: newPost, product: newProduct });
+    await newPost.save();
+    res.status(201).json(newPost);
   } catch (err) {
-    res.status(500).json({ error: err.message });
+    console.error(err);
+    res.status(500).json({ msg: 'Server error while creating post' });
   }
 };
 
-// PUT /api/post/:id - Update post (owner only)
+// PUT /api/post/:id - Update a post (owner only)
 exports.updatePost = async (req, res) => {
   try {
-    const { id } = req.params;
-    let post = await Post.findById(id);
-
-    if (!post) return res.status(404).json({ msg: 'Post not found' });
-
-    // Check ownership
-    if (post.user_id.toString() !== req.user.id) {
-      return res.status(403).json({ msg: 'Unauthorized' });
+    const post = await Post.findById(req.params.id);
+    if (!post) {
+      return res.status(404).json({ msg: 'Post not found' });
     }
 
-    post = await Post.findByIdAndUpdate(id, req.body, { new: true });
+    // Check ownership
+    if (post.user_id !== req.user.id) {
+      return res.status(403).json({ msg: 'Not authorized to update this post' });
+    }
+
+    // Update fields
+    const { price, for_trade, prod_local, status, product } = req.body;
+    if (price !== undefined) post.price = price;
+    if (for_trade !== undefined) post.for_trade = for_trade;
+    if (prod_local !== undefined) post.prod_local = prod_local;
+    if (status !== undefined) post.status = status;
+    if (product !== undefined) post.product = product;
+
+    await post.save();
     res.json(post);
   } catch (err) {
-    res.status(500).json({ error: err.message });
+    console.error(err);
+    res.status(500).json({ msg: 'Server error while updating post' });
   }
 };
 
-// DELETE /api/post/:id - Delete post (owner only)
+// DELETE /api/post/:id - Delete a post (owner only)
 exports.deletePost = async (req, res) => {
   try {
-    const { id } = req.params;
-    const post = await Post.findById(id);
-
-    if (!post) return res.status(404).json({ msg: 'Post not found' });
+    const post = await Post.findById(req.params.id);
+    if (!post) {
+      return res.status(404).json({ msg: 'Post not found' });
+    }
 
     // Check ownership
-    if (post.user_id.toString() !== req.user.id) {
-      return res.status(403).json({ msg: 'Unauthorized' });
+    if (post.user_id !== req.user.id) {
+      return res.status(403).json({ msg: 'Not authorized to delete this post' });
     }
 
     await post.remove();
-    res.json({ msg: 'Post deleted', post });
+    res.json({ msg: 'Post removed' });
   } catch (err) {
-    res.status(500).json({ error: err.message });
+    console.error(err);
+    res.status(500).json({ msg: 'Server error while deleting post' });
   }
 };

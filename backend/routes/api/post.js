@@ -1,15 +1,21 @@
 const express = require('express');
 const router = express.Router();
 const postController = require('../../api/post/post.controller');
-const authMiddleware = require('../../api/auth/auth.middleware');
+const auth = require('../../api/auth/auth.middleware');
 
-// Public routes
-router.get('/', postController.getAllPosts);        // GET /api/post - List all posts
-router.get('/:id', postController.getPostById);     // GET /api/post/:id - Get single post
+// GET /api/post - List all posts
+router.get('/', postController.getAllPosts);
 
-// Protected routes
-router.post('/', authMiddleware, postController.createPost);      // POST /api/post - Create post
-router.put('/:id', authMiddleware, postController.updatePost);    // PUT /api/post/:id - Update post
-router.delete('/:id', authMiddleware, postController.deletePost); // DELETE /api/post/:id - Delete post
+// GET /api/post/:id - Get a single post
+router.get('/:id', postController.getPostById);
+
+// POST /api/post - Create new post (requires auth)
+router.post('/', auth, postController.createPost);
+
+// PUT /api/post/:id - Update post (requires auth, owner only)
+router.put('/:id', auth, postController.updatePost);
+
+// DELETE /api/post/:id - Delete post (requires auth, owner only)
+router.delete('/:id', auth, postController.deletePost);
 
 module.exports = router;

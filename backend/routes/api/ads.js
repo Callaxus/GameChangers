@@ -1,10 +1,21 @@
 const express = require('express');
 const router = express.Router();
-const Ad = require('../models/Ad');
+
+// Forward all /api/ads requests to /api/posts
+router.use('/', require('./post'));
+
+module.exports = router;
+
+
+
+/*
+const express = require('express');
+const router = express.Router();
+const Post = require('../../models/post'); // Updated model import
 
 // @route   GET /api/ads
-// @desc    Listar anúncios com filtros, pesquisa e ordenação
-// @access  Público
+// @desc    List posts with filters, search, and sorting (via embedded product fields)
+// @access  Public
 router.get('/', async (req, res) => {
   try {
     const {
@@ -12,43 +23,46 @@ router.get('/', async (req, res) => {
       category,
       minPrice,
       maxPrice,
-      sortBy,    // ex: "price", "createdAt"
-      order      // "asc" ou "desc"
+      sortBy,    // e.g., "product.price", "createdAt"
+      order      // "asc" or "desc"
     } = req.query;
 
     const query = {};
 
-    // Pesquisa por texto
+    // 🔍 Text search (title or product description)
     if (search) {
       query.$or = [
-        { title: { $regex: search, $options: 'i' } },
-        { description: { $regex: search, $options: 'i' } }
+        { 'product.name': { $regex: search, $options: 'i' } },
+        { 'product.description': { $regex: search, $options: 'i' } }
       ];
     }
 
-    // Filtro por categoria
-    if (category) query.category = category;
-
-    // Filtro por faixa de preço
-    if (minPrice || maxPrice) {
-      query.price = {};
-      if (minPrice) query.price.$gte = Number(minPrice);
-      if (maxPrice) query.price.$lte = Number(maxPrice);
+    // 🗂️ Filter by product category
+    if (category) {
+      query['product.category'] = category;
     }
 
-    // Ordenação
+    // 💲 Filter by product price range
+    if (minPrice || maxPrice) {
+      query['product.price'] = {};
+      if (minPrice) query['product.price'].$gte = Number(minPrice);
+      if (maxPrice) query['product.price'].$lte = Number(maxPrice);
+    }
+
+    // ↕️ Sorting
     const sort = {};
     if (sortBy) {
       sort[sortBy] = order === 'desc' ? -1 : 1;
     }
 
-    const ads = await Ad.find(query).sort(sort);
-    res.json(ads);
+    const posts = await Post.find(query).sort(sort);
+    res.json(posts);
 
   } catch (err) {
     console.error(err);
-    res.status(500).json({ msg: 'Erro no servidor' });
+    res.status(500).json({ msg: 'Server error while searching posts' });
   }
 });
 
 module.exports = router;
+*/
