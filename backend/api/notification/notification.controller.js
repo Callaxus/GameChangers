@@ -57,16 +57,15 @@ exports.getNotifications = async (req, res) => {
 // Mark a notification as read
 exports.markAsRead = async (req, res) => {
   try {
-    const notification = await Notification.findById(req.params.id);
+    const notification = await Notification.findOneAndUpdate(
+      { _id: req.params.id, userId: req.user.id }, // find by ID and ensure ownership
+      { isRead: true, updatedAt: new Date() },
+      { new: true }
+    );
 
-    if (!notification) return res.status(404).json({ msg: 'Notification not found' });
-    if (notification.userId.toString() !== req.user.id) {
-      return res.status(403).json({ msg: 'Unauthorized' });
+    if (!notification) {
+      return res.status(404).json({ msg: 'Notification not found or unauthorized' });
     }
-
-    notification.isRead = true;
-    notification.updatedAt = new Date();
-    await notification.save();
 
     res.json(notification);
   } catch (err) {
