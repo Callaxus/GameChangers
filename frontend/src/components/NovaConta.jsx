@@ -1,3 +1,4 @@
+import axios from '../api';
 import { useState } from 'react';
 import { IoReturnUpBackOutline } from "react-icons/io5";
 import Input from './Input';
@@ -21,7 +22,7 @@ export default function NovaConta() {
         }
 
         try {
-            const res = await fetch('http://localhost:3000/register', {
+            const res = await axios('http://localhost:8082/api/register', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({

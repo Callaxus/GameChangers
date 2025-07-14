@@ -1,3 +1,4 @@
+import axios from '../api';
 import { CiSearch } from "react-icons/ci";
 import { GoBell } from "react-icons/go";
 import CardItem from "./CardItem"
@@ -25,8 +26,6 @@ import figure from "../CategoriasImg/figure.png"
 import plush from "../CategoriasImg/plush.png"
 import logo from "../CategoriasImg/logoRoxo.png"
 import { BiSolidCategoryAlt } from "react-icons/bi";
-import NavBar from "./NavBar";
-import PixelCard from "./PixelCard";
 
 
 import { useState, useEffect } from "react";
@@ -50,7 +49,7 @@ export default function ExplorePage(props) {
             useEffect(() => {
                 const fetchNotificationCount = async () => {
                 try {
-                    const response = await fetch('/api/notifications/count', {
+                    const response = await axios('/api/notifications/count', {
                         headers: {
                             'Authorization': `Bearer ${localStorage.getItem('token')}`, // Adjust based on your auth setup
                             'Content-Type': 'application/json'
@@ -253,7 +252,7 @@ export default function ExplorePage(props) {
                         <button className='font-bowlby border-2 border-purple-900 bg-purple-900 text-white rounded-lg px-20 py-2 m-2 w-72 hover:bg-white hover:text-purple-900 transition-colors' onClick={() => navigate('/novaconta')}>Criar Conta</button>
                     </div>
                 )}
-              <NavBar></NavBar>
+              
             </div>
            
         </div>

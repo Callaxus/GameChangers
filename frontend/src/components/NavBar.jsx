@@ -4,23 +4,22 @@ import { FaRegUser } from "react-icons/fa";
 import { MdTravelExplore } from "react-icons/md";
 
 
-function Nav({ className = "" }) {
+function Nav() {
   const navigate = useNavigate();
   return (
-    <div className={`fixed bottom-0 left-0 w-full z-50 bg-orange-400 p-0 ${className}`}>
-      <div className="h-20 w-full flex flex-nowrap justify-around items-center">
-        <button onClick={() => navigate('/explore')}>
-          <MdTravelExplore className="text-purple-900 text-5xl" />
-        </button>
-        <button onClick={() => navigate('/criar-anuncio')}>
-          <BsPlusCircle className="text-purple-900 text-5xl" />
-        </button>
-        <button onClick={() => navigate('/perfil')}>
-          <FaRegUser className="text-purple-900 text-5xl " />
-        </button>
-      </div>
-    </div>
-  );
+<div className="h-20 w-full bg-orange-400 flex flex-nowrap justify-around items-center">
+    <button onClick={() => navigate('/explore')}>
+<MdTravelExplore className="text-purple-900 text-5xl" />
+    </button>
+    <button onClick={() => navigate('/NOVOARTIGO')}>
+<BsPlusCircle className="text-purple-900 text-5xl" />
+    </button>
+     <button onClick={() => navigate('/userpage')}>
+<FaRegUser className="text-purple-900 text-5xl " />
+     </button>
+</div>
+
+          );
 }
 
 export default Nav;
