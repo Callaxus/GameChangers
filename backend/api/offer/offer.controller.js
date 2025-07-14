@@ -103,8 +103,7 @@ exports.updateOffer = async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 };
-
-// Delete an offer
+//delete offer
 exports.deleteOffer = async (req, res) => {
   try {
     const offer = await Offer.findById(req.params.id);
@@ -115,12 +114,12 @@ exports.deleteOffer = async (req, res) => {
       return res.status(403).json({ msg: 'Unauthorized' });
     }
 
-    await offer.remove();
+    // Use deleteOne instead of remove
+    await Offer.deleteOne({ _id: req.params.id });
+
     res.json({ msg: 'Offer deleted' });
   } catch (err) {
     console.error('Error deleting offer:', err.message);
     res.status(500).json({ error: err.message });
   }
 };
-
-

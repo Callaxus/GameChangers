@@ -9,7 +9,7 @@ const navigate = useNavigate();
 
   return (
     <div 
-      className="bg-orange-100 rounded m-2 p-2 text-s flex flex-col transition-colors hover:bg-purple-200 justify-end"
+      className="bg-orange-100 rounded m-2 p-2 text-s flex flex-col justify-end"
       onClick={() => navigate('/produto')}
     >
       <img
