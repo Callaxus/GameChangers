@@ -16,7 +16,7 @@ export default function LoginPage() {
             localStorage.setItem('token', data.token); //  Save JWT token
 
             alert('Login successful!');
-            navigate('/dashboard'); //  Redirect to dashboard or home
+            navigate('/explore'); //  Redirect to dashboard or home
         } catch (err) {
             console.error('Login failed:', err.response?.data?.msg || err.message);
             alert(err.response?.data?.msg || 'Login failed');
