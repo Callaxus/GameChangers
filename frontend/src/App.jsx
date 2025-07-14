@@ -48,8 +48,8 @@ export default function App() {
         <button className="font-bowlby w-1/2 border-2 border-purple-900 bg-purple-900 text-white rounded-lg px-4 py-3 m-2 hover:bg-white hover:text-purple-900 transition-colors" onClick={() => navigate('/loginpage')}>Fazer Login</button>
         <button className="font-bowlby w-1/2 border-2 border-purple-900 bg-purple-900 text-white rounded-lg px-4 py-3 m-2 hover:bg-white hover:text-purple-900 transition-colors" onClick={() => navigate('/novaconta')}>Criar Conta</button>
       </div>
-      <div className='bg-orange-400 flex justify-center w-screen py-4'>
-        <button className="font-bowlby w-1/2 text-center flex justify-center border-2 border-purple-900 bg-purple-900 text-white rounded-lg p-3 m-2 hover:bg-white hover:text-orange-400 transition-colors" onClick={() => navigate('/explore')}>Convidado</button>
+      <div className='bg-orange-400/40 flex justify-center w-screen py-4'>
+        <button className="font-bowlby w-1/2 text-center flex justify-center bg-orange-400 text-white rounded-lg p-3 m-2 hover:bg-white hover:text-orange-400 transition-colors" onClick={() => navigate('/explore')}>Convidado</button>
       </div>
     </div>  
   );

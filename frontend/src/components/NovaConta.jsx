@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { IoReturnUpBackOutline } from "react-icons/io5";
 import Input from './Input';
+import PixelCard from './PixelCard';
 import { useNavigate } from 'react-router-dom';
 
 export default function NovaConta() {
@@ -43,8 +44,13 @@ export default function NovaConta() {
                 <p className='text-purple-900 text-3xl font-bowlby'>GameChangers</p>
             </div>
 
-                <div id='body' className=" text-purple-900 flex flex-col items-center h-screen leading-relaxed">
-                <h2 className='font-bowlby text-4xl mt-5 mb-5'> CRIAR NOVA CONTA</h2>
+
+
+<PixelCard variant="purple" className="fixed inset-0">
+    
+   <div id='body' className="text-purple-900 flex flex-col items-center h-screen leading-relaxed">
+        <h2 className='font-bowlby text-4xl mt-5 mb-5'> CRIAR NOVA CONTA</h2>
+        
                 <Input title={"Nome"} placeholder="Nome de Usuário" onChange={(e) => setForm({ ...form, username: e.target.value })} />
                 <Input title={"Email"} placeholder="Email" onChange={(e) => setForm({ ...form, email: e.target.value })} />
                 <Input title={"Senha"} type="password" placeholder="Password" onChange={(e) => setForm({ ...form, password: e.target.value })} />
@@ -55,6 +61,12 @@ export default function NovaConta() {
                 </label>
                 <button className='mt-16 font-bowlby border-2 border-purple-900 bg-purple-900 text-white rounded-lg px-20 py-2 m-2 w-72 hover:bg-white hover:text-purple-900 transition-colors' onClick={handleNovaConta}>CRIAR CONTA</button>
             </div >
+</PixelCard>
+
+  
+
+
+               
         </>
 );
 }

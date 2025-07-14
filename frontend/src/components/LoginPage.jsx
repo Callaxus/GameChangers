@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { IoReturnUpBackOutline } from "react-icons/io5";
 import Input from './Input';
 import { useNavigate } from 'react-router-dom';
+import PixelCard from './PixelCard';
 
 
 export default function LoginPage() {
@@ -30,10 +31,10 @@ export default function LoginPage() {
                 <button className='text-purple-900 text-4xl' onClick={() => navigate('/') }><IoReturnUpBackOutline /> </button>
                 <p className='text-purple-900 text-3xl font-bowlby'>GameChangers</p>
             </div>
-
+<PixelCard variant="purple" className="fixed inset-0">
             <div 
             id='body' 
-            className=" text-purple-900 flex flex-col items-center bg-orange-100 h-screen leading-relaxed">
+            className=" text-purple-900 flex flex-col items-center h-screen leading-relaxed">
                 <h2 
                 className="font-bowlby text-4xl mt-5 mb-5">
                     Entrar na Conta
@@ -73,6 +74,6 @@ export default function LoginPage() {
                 onClick={handleLogin}>
                     ENTRAR
                 </button>
-            </div>
+            </div></PixelCard>
         </>
     );}

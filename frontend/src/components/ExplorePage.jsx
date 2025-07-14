@@ -35,10 +35,14 @@ export default function ExplorePage(props) {
     const [anuncios, setAnuncios] = useState([]);
 
     const teste = [
-        { name: "Carta 1", price: "10€", location: "Lisboa", date: "há 2 dias" },
-        { name: "Carta 2", price: "20€", location: "Braga", date: "há 20 dias" },
-        { name: "Carta 3", price: "15€", location: "Queluz", date: "há 15 dias" },
-        { name: "Carta 4", price: "30€", location: "Porto", date: "há 0 dias" },
+        { img: "https://i.redd.it/i-made-some-hollow-knight-themed-mtg-cards-apologies-in-v0-0nsny04456cb1.png?width=1500&format=png&auto=webp&s=eacb3d8ea75c099a0965d7c42ff30fd213470cdb",
+          name: "Carta 1", price: "10€", location: "Lisboa", date: "há 2 dias" },
+        { img:"https://i.pinimg.com/474x/7e/e1/90/7ee19061c0c59246ac23ee1ea88a6d76.jpg",
+            name: "Carta 2", price: "20€", location: "Braga", date: "há 20 dias" },
+        { img: "https://a-static.mlcdn.com.br/1500x1500/jogo-game-fifa-23-br-para-xbox-one-midia-fisica-ea-sports/bunkertech/fifa23xbox/7a4b8312ef4ccd25a33e62a82f829b16.jpeg",
+            name: "Jogo 3", price: "15€", location: "Queluz", date: "há 15 dias" },
+        { img:"https://a-static.mlcdn.com.br/800x560/jogo-mario-kart-8-deluxe-nintendo-switch-midia-fisica-nitendo/bunkertech/118383b/62985fe0fd789b1d212e1b71ea3484ae.jpeg",
+            name: "Jogo 4", price: "30€", location: "Porto", date: "há 0 dias" },
     ]
     useEffect(() => {
         // Fetch or set initial data for anuncios
@@ -197,25 +201,33 @@ export default function ExplorePage(props) {
                 </div>
 
                 <h1 className="text-purple-900 text-4xl font-bowlby p-5"> Anúncios Populares</h1>
-                <div id="cardItemFlex" className="m-2 grid grid-cols-2 gap-2">
-
+                <div
+                    id="cardItemFlex"
+                    className="m-2 grid grid-cols-2 gap-2 shadow-xl rounded-xl bg-white "
+                >
                     {teste.map((item, index) => (
-                        <CardItem
+                        <div
                             key={index}
-                            name={item.name}
-                            price={item.price}
-                            date={item.date}
-                            location={item.location}
-                            onClick={() => navigate('/produto/$produtoID')}
-                        />
+                            className="transition-transform duration-200 hover:-translate-y-2 "
+                        >
+                            <CardItem
+                                img={item.img}
+                                name={item.name}
+                                price={item.price}
+                                date={item.date}
+                                location={item.location}
+                                onClick={() => navigate('/produto/$produtoID')}
+                            />
+                        </div>
                     ))}
                 </div>
 
-               
-
+                {/* Só mostra se NÃO estiver logado */}
+                {!usuarioLogado && (
                     <div id='criarContaNav' className='fixed bottom-0 left-0 bg-orange-400 p-2 h-min w-full text-center' >
                         <button className='font-bowlby border-2 border-purple-900 bg-purple-900 text-white rounded-lg px-20 py-2 m-2 w-72 hover:bg-white hover:text-purple-900 transition-colors' onClick={() => navigate('/novaconta')}>Criar Conta</button>
                     </div>
+                )}
               
             </div>
            
