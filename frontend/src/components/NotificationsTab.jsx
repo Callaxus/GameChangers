@@ -1,7 +1,7 @@
 import { IoReturnUpBackOutline } from "react-icons/io5";
-import OneOfferNotification from "./OneNotification";
-import OneNotificationAccepted from "./OneNotification copy";
-import OneNotificationRejected from "./OneNotification copy 2";
+import OneOfferNotification from "./OneOfferNotification";
+import OneNotificationAccepted from "./OneNotificationAccepted";
+import OneNotificationRejected from "./OneNotificationRejected";
 import { useNavigate } from 'react-router-dom';
 
 export default function Notifications() {
