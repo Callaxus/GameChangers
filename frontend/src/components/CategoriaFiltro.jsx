@@ -3,48 +3,42 @@ import { IoReturnUpBackOutline } from "react-icons/io5";
 import { useState, useEffect } from 'react';
 
 export default function CategoryPage() {
-    const { categorySlug } = useParams();
-    const location = useLocation();
+    const { categorySlug } = useParams(); // Get categorySlug from the URL
+    const location = useLocation(); // Get any passed state (optional)
     const navigate = useNavigate();
     const [filteredItems, setFilteredItems] = useState([]);
-    
-    // Get category name from navigation state or derive from slug
-    const categoryName = location.state?.categoryName || 
-        categorySlug.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
 
-    // Your items data - replace this with your actual data structure
+    // Get categoryName from state or fallback to slug-based title
+   const categoryName = categorySlug.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
     const allItems = [
         {
             id: 1,
             name: "Magic Card Example",
-            category: "Magic: The Gathering",
+            category: "magic-the-gathering", // Must match the slug format
             price: 25.99,
             image: "/path/to/image.jpg"
         },
         {
             id: 2,
             name: "Pokemon Card Example",
-            category: "Cartas Pokemon",
+            category: "cartas-pokemon",
             price: 15.99,
             image: "/path/to/image.jpg"
         },
         {
             id: 3,
             name: "PS4 Game Example",
-            category: "Playstation 4",
+            category: "playstation-4",
             price: 45.99,
             image: "/path/to/image.jpg"
         },
-        // Add more items...
+        // Add more items as needed
     ];
 
     useEffect(() => {
-        // Filter items based on category
-        const filtered = allItems.filter(item => 
-            item.category.toLowerCase() === categoryName.toLowerCase()
-        );
+        const filtered = allItems.filter(item => item.category === categorySlug);
         setFilteredItems(filtered);
-    }, [categoryName]);
+    }, [categorySlug]);
 
     return (
         <div>
@@ -52,10 +46,11 @@ export default function CategoryPage() {
                 <IoReturnUpBackOutline 
                     size={30} 
                     className="cursor-pointer"
-                    onClick={() => navigate('/categorias')}
+                    onClick={() => navigate('/categorias')}  // Back to categories page
                 />
+                
                 <h1 className="font-bowlby pl-5 text-right text-4xl text-purple-900">
-                    {categoryName}
+                    {categoryName} {/* Display category name */}
                 </h1>
             </div>
 

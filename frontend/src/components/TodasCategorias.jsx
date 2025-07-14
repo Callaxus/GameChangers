@@ -25,15 +25,27 @@ import figure from "../CategoriasImg/figure.png"
 import plush from "../CategoriasImg/plush.png"
 
 import { FaArrowDownShortWide } from "react-icons/fa6";
+import { useParams } from 'react-router-dom';
+
+  
+  // Check if categorySlug is received correctly
 
 
 export default function Categorias(){
+
+     const { categorySlug } = useParams();
      const navigate = useNavigate();
+
      const handleCategoryClick = (categoryName) => {
-    navigate(`/category/${categoryName.replace(/\s+/g, '-').toLowerCase()}`, {
-      state: { categoryName }  // Pass categoryName as state
-    });
-  };
+     const categorySlug = categoryName.replace(/\s+/g, '-').toLowerCase();
+     navigate(`/category/${categorySlug}`, {
+        state: { categoryName },
+
+         useEffect(props) => {
+        const filtered = allItems.filter(item => item.category === categorySlug);
+        setFilteredItems(filtered);
+           } [categorySlug]);
+ 
     return (
         <div>
              <div>
