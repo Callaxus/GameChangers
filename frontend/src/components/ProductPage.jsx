@@ -22,12 +22,14 @@ export default function ProductPage () {
                     <IoReturnUpBackOutline size={30}/>
                      <h1 className="font-bowlby pl-5 text-right text-4xl text-purple-900">GameChangers</h1>
                 </div>
+
+                <div className="flex justify-center items-center my-4">
                 <img 
-                className="w-full" 
-                src={product}
-                alt=""
-                >
-                </img>
+                    className="w-1/2 h-auto m-2"
+                    src={product}
+                    alt="carta"
+                />
+                </div>
 
                 <div
                 className="text-purple-800 font-semibold flex items-center justify-between m-5">
@@ -52,7 +54,7 @@ export default function ProductPage () {
                 className="m-5 flex items-center justify-between">
                     <p className="text-orange-400">#Category #Category</p>
                     <p
-                    className="text-2xl text-purple-900">Preço</p>
+                    className="text-2xl text-purple-900">10,00€</p>
                 </div>
 
                 <div
@@ -81,7 +83,7 @@ export default function ProductPage () {
                 <div
                 className="flex justify-center m-5">
                      <button
-                        className="bg-orange-400 text-2xl tracking-wider hover:bg-orange-900/50 border-2 border-orange-800 text-white px-6 py-4 rounded-xl transition-colors font-bowlby w-80 m-5"> 
+                        className="bg-orange-400 text-2xl tracking-wider hover:bg-orange-900/50 border-2 border-purple-900 hover:text-purple-900 text-white px-6 py-4 rounded-xl transition-colors font-bowlby w-80 m-5"> 
                             Tenho Interesse
                     </button>
                     

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { IoReturnUpBackOutline } from "react-icons/io5";
 import Input from './Input';
+import PixelCard from './PixelCard';
 import { useNavigate } from 'react-router-dom';
 
 export default function NovaConta() {
