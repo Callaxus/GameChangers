@@ -2,6 +2,7 @@ const Offer = require('../../models/offer');
 
 // Create a new offer
 exports.createOffer = async (req, res) => {
+  console.log('Incoming Offer req.body:', req.body);
   try {
     const { post_id, owner_id, buy_offer } = req.body;
 
@@ -9,13 +10,18 @@ exports.createOffer = async (req, res) => {
       return res.status(400).json({ msg: 'Missing required fields' });
     }
 
+    // Auto-increment offerid
+    const lastOffer = await Offer.findOne().sort({ offerid: -1 });
+    const nextOfferId = lastOffer ? lastOffer.offerid + 1 : 1;
+
     const newOffer = new Offer({
+      offerid: nextOfferId,       // 🔥 Fix applied
       post_id,
       owner_id,
-      buyer_id: req.user.id,      // Automatically assign from JWT
+      buyer_id: req.user.id,
       buy_offer,
-      status: 'pending',          // Default status
-      notification: true          // Default notification flag
+      status: 'pending',
+      notification: true
     });
 
     await newOffer.save();

@@ -28,7 +28,7 @@ exports.register = async (req, res) => {
 
     await user.save();
 
-    const payload = { user: { id: user._id } }; //  Use _id
+    const payload = { user: { id: user._id, role: user.role } }; //  Use _id and role
     jwt.sign(
       payload,
       jwtSecret,
@@ -54,7 +54,7 @@ exports.login = async (req, res) => {
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) return res.status(400).json({ msg: 'Invalid Credentials' });
 
-    const payload = { user: { id: user._id } }; // ✅ Use _id
+    const payload = { user: { id: user._id, role: user.role } }; // Use _id and role
     jwt.sign(
       payload,
       jwtSecret,

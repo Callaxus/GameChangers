@@ -10,7 +10,7 @@ router.post('/', authMiddleware, notificationController.createNotification);
 router.get('/', authMiddleware, notificationController.getNotifications);
 
 // Mark a notification as read (protected)
-router.put('/:id', authMiddleware, notificationController.markAsRead);
+router.put('/:id/read', authMiddleware, notificationController.markAsRead);
 
 // Delete a notification (protected)
 router.delete('/:id', authMiddleware, notificationController.deleteNotification);
