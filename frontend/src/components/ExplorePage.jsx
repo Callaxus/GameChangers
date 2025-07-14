@@ -3,7 +3,7 @@ import { GoBell } from "react-icons/go";
 import CardItem from "./CardItem"
 import Category from "./CategoryCircle";
 import { useNavigate } from "react-router-dom";
-import magicImg from "../CategoriasImg/magic.png";
+import magicImg from "../CategoriasImg/magicteh.png";
 import ps4Img from "../CategoriasImg/ps4.png";
 import ns2Img from "../CategoriasImg/ns2.png";
 import ps5Img from "../CategoriasImg/ps5.png";
@@ -17,12 +17,12 @@ import ps2 from "../CategoriasImg/ps2.png";
 import ps3 from "../CategoriasImg/ps3.png";
 import psp from "../CategoriasImg/psp.png";
 import psvita from "../CategoriasImg/vita.png";
-import nds from "../CategoriasImg/magic.png";
 import ds3 from "../CategoriasImg/ds.png";
-import pkmimg from "../CategoriasImg/magic.png";
-import yghImg from "../CategoriasImg/magic.png";
-import plushImg from "../CategoriasImg/magic.png";
-import figImg from "../CategoriasImg/magic.png";
+import yugio from "../CategoriasImg/yugio.png"
+import pokemon from "../CategoriasImg/pokemon.png"
+import nintendods from "../CategoriasImg/nintendods.png"
+import figure from "../CategoriasImg/figure.png"
+import plush from "../CategoriasImg/plush.png"
 import logo from "../CategoriasImg/logoRoxo.png"
 import { BiSolidCategoryAlt } from "react-icons/bi";
 
@@ -33,6 +33,7 @@ export default function ExplorePage(props) {
     const navigate = useNavigate();
     const [usuarioLogado, setUsuarioLogado] = useState(false);
     const [anuncios, setAnuncios] = useState([]);
+    const [count, setCount] = useState([]);
 
     const teste = [
         { img: "https://i.redd.it/i-made-some-hollow-knight-themed-mtg-cards-apologies-in-v0-0nsny04456cb1.png?width=1500&format=png&auto=webp&s=eacb3d8ea75c099a0965d7c42ff30fd213470cdb",
@@ -44,11 +45,29 @@ export default function ExplorePage(props) {
         { img:"https://a-static.mlcdn.com.br/800x560/jogo-mario-kart-8-deluxe-nintendo-switch-midia-fisica-nitendo/bunkertech/118383b/62985fe0fd789b1d212e1b71ea3484ae.jpeg",
             name: "Jogo 4", price: "30€", location: "Porto", date: "há 0 dias" },
     ]
-    useEffect(() => {
-        // Fetch or set initial data for anuncios
-        // setAnuncios(fetchedData);
+            useEffect(() => {
+                const fetchNotificationCount = async () => {
+                try {
+                    const response = await fetch('/api/notifications/count', {
+                        headers: {
+                            'Authorization': `Bearer ${localStorage.getItem('token')}`, // Adjust based on your auth setup
+                            'Content-Type': 'application/json'
+                        }
+                    });
+                    
+                    if (response.ok) {
+                        const data = await response.json();
+                        setCount(data.count);
+                    }
+                } catch (error) {
+                    console.error('Failed to fetch notification count:', error);
+                    setCount(0);
+                }
+            };
 
-    }, [])
+    fetchNotificationCount();
+}, [])
+   
 
     return (
         <div
@@ -82,9 +101,14 @@ export default function ExplorePage(props) {
                     </form>
                 </div>
                 <button
-                    className="flex items-center justify-center px-4 py-2 text-purple-800 me-2"
+                    className="flex items-center justify-center px-4 py-2 text-purple-800 me-2 relative"
                     onClick = {() => navigate('/notifications')}>
                     <GoBell size={30} />
+                     {count > 0 && (
+                            <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center min-w-[20px]">
+                                 {count > 99 ? '99+' : count}
+                            </span>
+                    )}
                 </button>
             </div>
            
@@ -174,7 +198,7 @@ export default function ExplorePage(props) {
                             title="PS Vita" 
                             link = "/categorias/ps-vita"/>
                         <Category
-                            imgSrc={nds}
+                            imgSrc={nintendods}
                             title="Nintendo DS" 
                             link = "/categorias/nintendo-ds"/>
                         <Category
@@ -182,19 +206,19 @@ export default function ExplorePage(props) {
                             title="Nintendo 3DS" 
                             link = "/categorias/nintendo-3ds"/>
                         <Category
-                            imgSrc={pkmimg}
+                            imgSrc={pokemon}
                             title="Cartas Pokemon" 
                             link = "/categorias/cartas-pokemon"/>
                         <Category
-                            imgSrc={yghImg}
+                            imgSrc={yugio}
                             title="Cartas Yu-gi-oh" 
                             link = "/categorias/cartas-yugioh"/>
                         <Category
-                            imgSrc={plushImg}
+                            imgSrc={plush}
                             title="Peluches" 
                             link = "/categorias/peluches"/>
                         <Category
-                            imgSrc={figImg}
+                            imgSrc={figure}
                             title="Figuras" 
                             link = "/categorias/figuras"/>
                     </div>
@@ -208,7 +232,6 @@ export default function ExplorePage(props) {
                     {teste.map((item, index) => (
                         <div
                             key={index}
-                            className="transition-transform duration-200 hover:-translate-y-2 "
                         >
                             <CardItem
                                 img={item.img}

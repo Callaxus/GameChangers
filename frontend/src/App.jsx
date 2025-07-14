@@ -2,6 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import './App.css'
 import './index.css'
 import GridMotion from './components/GridMotion.jsx';
+import AppRoutes from '../src/routes/Routes.jsx'; 
 
 export default function App() {
   const navigate = useNavigate();
@@ -51,6 +52,7 @@ export default function App() {
       <div className='bg-orange-400/40 flex justify-center w-screen py-4'>
         <button className="font-bowlby w-1/2 text-center flex justify-center bg-orange-400 text-white rounded-lg p-3 m-2 hover:bg-white hover:text-orange-400 transition-colors" onClick={() => navigate('/explore')}>Convidado</button>
       </div>
+       <AppRoutes />
     </div>  
   );
 }

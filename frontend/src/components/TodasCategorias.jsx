@@ -1,6 +1,8 @@
 import { useNavigate } from 'react-router-dom';
 import { IoReturnUpBackOutline } from "react-icons/io5";
-import ListaCat from './UmaCategoriaLista';
+import ListaCat from './UmaCategoriaLista.jsx';
+
+
 import magicImg from "../CategoriasImg/magic.png";
 import ps4Img from "../CategoriasImg/ps4.png";
 import ns2Img from "../CategoriasImg/ns2.png";
@@ -15,17 +17,23 @@ import ps2 from "../CategoriasImg/ps2.png";
 import ps3 from "../CategoriasImg/ps3.png";
 import psp from "../CategoriasImg/psp.png";
 import psvita from "../CategoriasImg/vita.png";
-import nds from "../CategoriasImg/magic.png";
 import ds3 from "../CategoriasImg/ds.png";
-import pkmimg from "../CategoriasImg/magic.png";
-import yghImg from "../CategoriasImg/magic.png";
-import plushImg from "../CategoriasImg/magic.png";
-import figImg from "../CategoriasImg/magic.png";
+import yugio from "../CategoriasImg/yugio.png"
+import pokemon from "../CategoriasImg/pokemon.png"
+import nintendods from "../CategoriasImg/nintendods.png"
+import figure from "../CategoriasImg/figure.png"
+import plush from "../CategoriasImg/plush.png"
+
 import { FaArrowDownShortWide } from "react-icons/fa6";
 
 
 export default function Categorias(){
      const navigate = useNavigate();
+     const handleCategoryClick = (categoryName) => {
+    navigate(`/category/${categoryName.replace(/\s+/g, '-').toLowerCase()}`, {
+      state: { categoryName }  // Pass categoryName as state
+    });
+  };
     return (
         <div>
              <div>
@@ -42,13 +50,17 @@ export default function Categorias(){
 
                               <ListaCat 
                              imgSrc = {magicImg}
-                             title = "Magic: The Gathering"/>
+                             title = "Magic: The Gathering"
+                             onClick={() => handleCategoryClick("magic-the-gathering")}/>
                               <ListaCat  
-                             imgSrc = {pkmimg}
-                             title = "Cartas Pokemon"/>
+                             imgSrc = {pokemon}
+                             title = "Cartas Pokemon"
+                             onClick={() => handleCategoryClick("cartas-pokemon")}/>
+
                              <ListaCat  
-                             imgSrc = {yghImg}
-                             title = "Cartas Yu-gi-oh"/>
+                             imgSrc = {yugio}
+                             title = "Cartas Yu-gi-oh"
+                             onClick={() => handleCategoryClick("cartas-yu-gi-oh")}/>
 
                               <div className="flex items-center text-purple-800">  
                               
@@ -58,59 +70,76 @@ export default function Categorias(){
 
                              <ListaCat  
                              imgSrc = {ps4Img}
-                             title = "Playstation 4"/>
+                             title = "Playstation 4"
+                             onClick={() => handleCategoryClick("playstation-4")}/>
                              <ListaCat  
                              imgSrc = {ns2Img}
-                             title = "Nintendo Switch 2"/>
+                             title = "Nintendo Switch 2"
+                             onClick={() => handleCategoryClick("nintendo-switch-2")}/>
                              <ListaCat  
                              imgSrc = {ps5Img}
-                             title = "Playstation 5"/>
+                             title = "Playstation 5"
+                             onClick={() => handleCategoryClick("playstation-5")}/>
                              <ListaCat  
                              imgSrc = {nsImg}
-                             title = "Nintendo Switch"/>
+                             title = "Nintendo Switch"
+                             onClick={() => handleCategoryClick("nintendo-switch")}/>
                              <ListaCat  
                              imgSrc = {xboxsxImg}
-                             title = "Xbox Series X"/>
+                             title = "Xbox Series X"
+                             onClick={() => handleCategoryClick("xbox-series-x")}/>
                              <ListaCat  
                              imgSrc = {xbox1Img}
-                             title = "Xbox One"/>
+                             title = "Xbox One"
+                             onClick={() => handleCategoryClick("xbox-one")}/>
                              <ListaCat  
                              imgSrc = {xbox360Img}
-                             title = "Xbox 360"/>
+                             title = "Xbox 360"
+                             onClick={() => handleCategoryClick("xbox-360")}/>
                              <ListaCat  
                              imgSrc = {xboxsos}
-                             title = "Xbox Series OS"/>
+                             title = "Xbox Series OS"
+                             onClick={() => handleCategoryClick("xbox-series-os")}/>
                              <ListaCat  
                              imgSrc = {ps1}
-                             title = "Playstation 1"/>
+                             title = "Playstation 1"
+                             onClick={() => handleCategoryClick("playstation-1")}/>
                              <ListaCat  
                              imgSrc = {ps2}
-                             title = "Playstation 2"/>
+                             title = "Playstation 2"
+                             onClick={() => handleCategoryClick("playstation-2")}/>
                              <ListaCat  
                              imgSrc = {ps3}
-                             title = "Playstation 3"/>
+                             title = "Playstation 3"
+                             onClick={() => handleCategoryClick("playstation-3")}/>
                              <ListaCat  
                              imgSrc = {psp}
-                             title = "PSP"/>
+                             title = "PSP"
+                             onClick={() => handleCategoryClick("psp")}/>
                              <ListaCat  
                              imgSrc = {psvita}
-                             title = "PS Vita"/>
+                             title = "PS Vita"
+                             onClick={() => handleCategoryClick("ps-vita")}/>
                              <ListaCat  
-                             imgSrc = {nds}
-                             title = "Nintendo DS"/>
+                             imgSrc = {nintendods}
+                             title = "Nintendo DS"
+                             onClick={() => handleCategoryClick("nintendo-ds")}/>
                              <ListaCat  
                              imgSrc = {ds3}
-                             title = "Nintendo 3DS"/>
+                             title = "Nintendo 3DS"
+                             onClick={() => handleCategoryClick("nintendo-3ds")}/>
                          <div className="flex items-center text-purple-800">
                                    <button className="text-2xl font-bowlby pt-5 pl-5 p-2">Colecionáveis</button>
                                    <FaArrowDownShortWide size={30} className="mt-3"/>
                          </div>
                              <ListaCat  
-                             imgSrc = {plushImg}
-                             title = "Peluches"/>
+                             imgSrc = {plush}
+                             title = "Peluches"
+                             onClick={() => handleCategoryClick("peluches")}/>
                              <ListaCat  
-                             imgSrc = {figImg}
-                             title = "Figuras"/>
+                             imgSrc = {figure}
+                             title = "Figuras"
+                             onClick={() => handleCategoryClick("figuras")}/>
                              </div>
  </div>
     )

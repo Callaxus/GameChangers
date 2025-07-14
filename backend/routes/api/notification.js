@@ -6,6 +6,9 @@ const authMiddleware = require('../../api/auth/auth.middleware');
 // Create a new notification (protected)
 router.post('/', authMiddleware, notificationController.createNotification);
 
+// Get unread notification count (protected) 
+router.get('/count', authMiddleware, notificationController.getUnreadCount);
+
 // Get all notifications for the authenticated user (protected)
 router.get('/', authMiddleware, notificationController.getNotifications);
 

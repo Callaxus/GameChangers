@@ -19,6 +19,9 @@ export default function LoginPage() {
             });
             const data = await res.json();
             if (!res.ok) throw new Error(data.message);
+            
+             localStorage.setItem('token', data.token);
+
             alert(data.message);
         } catch (err) {
             alert(err.message);

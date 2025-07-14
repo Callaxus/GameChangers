@@ -27,6 +27,21 @@ exports.createNotification = async (req, res) => {
   }
 };
 
+// count unread
+
+exports.getUnreadCount = async (req, res) => {
+  try {
+    const count = await Notification.countDocuments({ 
+      userId: req.user.id, 
+      isRead: false 
+    });
+    res.json({ count });
+  } catch (err) {
+    console.error('Error fetching notification count:', err.message);
+    res.status(500).json({ error: err.message });
+  }
+};
+
 // Get all notifications for the authenticated user
 exports.getNotifications = async (req, res) => {
   try {
