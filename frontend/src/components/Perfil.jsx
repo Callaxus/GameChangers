@@ -5,12 +5,13 @@ import { useNavigate } from 'react-router-dom';
 import EditItem from './EditItem';
 import ItemHistorico from './ItemHistorico';
 import ProfileEdit from './profileEdit';
+import PixelCard from './PixelCard';
 
 
 function Perfil() {
     const navigate = useNavigate();
     const [showHistorico, setShowHistorico] = useState(false);
-    const itensHistorico = ["Item 1", "Item 2", "Item 3"]; // Example items, replace with actual data
+    const itensHistorico = [{name: "Carta1", date: new Date(), description: "Troca"}, {name: "Carta1", date: new Date(), description: "Venda"}, {name: "Carta1", date: new Date(), description: "Troca"}]; // Example items, replace with actual data
 
     return (
 
@@ -24,15 +25,12 @@ function Perfil() {
             </div>
 
             <div className='font-bowlby text-purple-900 flex items-center justify-center m-5'>
-                <img className=' w-20 h-20 rounded-full me-5' src="https://biografiaresumida.com.br/wp-content/uploads/2017/12/Henry-Cavill.jpg" alt="usuariofoto" />
+                <img className='size-40 rounded-full me-5' src="https://biografiaresumida.com.br/wp-content/uploads/2017/12/Henry-Cavill.jpg" alt="usuariofoto" />
                 <div>
                 <p className="text-2xl">Username</p>
-                <p className="text-sm font-sans">Data de Criação da Conta</p>
+                <p className="text-sm font-sans"></p>
                 </div> 
            </div>
-
-            <ProfileEdit/>
-            
             <div className=''>
                 <div id="meusitens" className='text-white bg-purple-900 font-bowlby p-3 border-2 rounded-lg m-2' >
                     <div id="scrolling-wrapper" className="w-md">
@@ -53,7 +51,7 @@ function Perfil() {
                         onClick={() => setShowHistorico(!showHistorico)}
                     />
                 </div>
-
+       
                 {showHistorico && (
                     <div id="historico" className='text-white bg-purple-100 p-3 border-2 rounded-lg m-2'>
                         <div>
@@ -63,8 +61,8 @@ function Perfil() {
                         </div>
                     </div>
                 )}
-            </div>
-        </div>
+            </div>  
+        </div> 
     );
 };
 export default Perfil

@@ -34,23 +34,20 @@ export default function App() {
     "https://images.unsplash.com/photo-1531594896955-305cf81269f1?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   ];
   return (
-    <div className="relative min-h-screen w-full flex flex-col justify-between overflow-hidden">
-      {/* Animação como background */}
+    <div className="relative min-h-screen w-full flex flex-col justify-center overflow-hidden">
       <div className="fixed inset-0 -z-10 w-screen h-screen overflow-hidden">
         <div className="w-full h-full">
           <GridMotion items={items} />
         </div>
       </div>
-      <div className='flex flex-col items-center rounded-xl p-12 bg-orange-400 bg-opacity-40'>
+      <div className='flex flex-col justify-center m-4 items-center rounded-xl bg-orange-400 bg-opacity-40'>
         <img className='flex justify-center' src='/logoRoxo.png' alt='logoroxo' />
-        <h1 className='w- flex justify-center text-purple-900 text-5xl font-bowlby'>GameChangers</h1>
-        <h3 className='flex justify-center font-open text-purple-900'>Marketplace de troca e venda de Jogos e Cartas</h3>
+        <h1 className='flex justify-center text-purple-900 text-5xl font-bowlby'>GameChangers</h1>
+        <h2 className='flex justify-center text-2xl font-open font-blod text-purple-900 p-4 '>Marketplace de troca e venda de jogos e cartas</h2>
         <button className="font-bowlby w-1/2 border-2 border-purple-900 bg-purple-900 text-white rounded-lg px-4 py-3 m-2 hover:bg-white hover:text-purple-900 transition-colors" onClick={() => navigate('/loginpage')}>Fazer Login</button>
         <button className="font-bowlby w-1/2 border-2 border-purple-900 bg-purple-900 text-white rounded-lg px-4 py-3 m-2 hover:bg-white hover:text-purple-900 transition-colors" onClick={() => navigate('/novaconta')}>Criar Conta</button>
-      </div>
-      <div className='bg-orange-400/40 flex justify-center w-screen py-4'>
-        <button className="font-bowlby w-1/2 text-center flex justify-center bg-orange-400 text-white rounded-lg p-3 m-2 hover:bg-white hover:text-orange-400 transition-colors" onClick={() => navigate('/explore')}>Convidado</button>
-      </div>
+         <button className="font-bowlby w-1/2 border-2 border-orange-400 bg-orange-400 text-center mt-24 flex justify-center  text-white rounded-lg p-3 m-2 hover:bg-white hover:text-orange-400 transition-colors" onClick={() => navigate('/explore')}>Convidado</button>
     </div>  
+    </div>
   );
 }

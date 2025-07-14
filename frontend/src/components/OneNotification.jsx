@@ -4,7 +4,7 @@ export default function OneNotificationAccepted() {
       <div className="grid grid-cols-3 gap-4 items-center">
      
         <div className="col-span-2 flex flex-col justify-between h-full">
-          <h1 className="font-bowlby text-2xl text-purple-800 mb-2">Oferta Aceite</h1>
+          <h1 className="font-bowlby text-2xl text-purple-800 mb-2">Oferta Aceita</h1>
           <p className="mb-4">Aceitou a oferta de <b>Username.</b> </p>
           <p></p>
         
