@@ -31,7 +31,7 @@ export default function ProductPage () {
                 />
                 </div>
 
-                <div
+                <div id="favorito"
                 className="text-purple-800 font-semibold flex items-center justify-between m-5">
                     <div
                     className="cursor-pointer"
