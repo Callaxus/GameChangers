@@ -1,10 +1,10 @@
 import React from 'react';
 
-export default function Card({ title, description, price, image, location }) {
+export default function Card({ title, description, price, images, location }) {
   return (
     <div className="bg-white rounded-lg shadow-lg overflow-hidden">
       <img
-        src={image || 'https://via.placeholder.com/300'} // fallback image
+        src={images || 'https://via.placeholder.com/300'} // fallback image
         alt={title}
         className="w-full h-48 object-cover"
       />
